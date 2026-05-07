@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | EBSB Club</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .vision-mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 40px;
+    }
+    @media(max-width: 768px) {
+      .vision-mission-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 40px auto;
+    }
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      background-color: var(--saffron);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -2px;
+    }
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      background-color: inherit;
+      width: 50%;
+    }
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      right: -10px;
+      background-color: var(--white);
+      border: 4px solid var(--green);
+      top: 15px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    .left { left: 0; }
+    .right { left: 50%; }
+    .right::after { left: -10px; }
+    .timeline-content {
+      padding: 20px;
+      background-color: var(--white);
+      border-radius: 10px;
+      box-shadow: var(--shadow-sm);
+    }
+    @media screen and (max-width: 600px) {
+      .timeline::after { left: 31px; }
+      .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+      .left::after, .right::after { left: 21px; }
+      .right { left: 0%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-transition"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <i class="fa-solid fa-hands-holding-circle"></i>
+        </div>
+        <span>EBSB <span style="color: var(--saffron);">IIT Jammu</span></span>
+      </a>
+      
+      <button class="mobile-menu-btn" aria-label="Toggle Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About Us</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="achievements.html">Achievements</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header slide-in-left">
+    <div class="container">
+      <h1>About Us</h1>
+      <p>Discover the vision, mission, and journey of the Ek Bharat Shreshtha Bharat Club at IIT Jammu.</p>
+    </div>
+  </header>
+
+  <!-- About Initiative -->
+  <section class="bg-white">
+    <div class="container text-center">
+      <h2 class="section-title slide-up">The EBSB Initiative</h2>
+      <p class="slide-up delay-100" style="max-width: 800px; margin: 0 auto; font-size: 1.1rem;">
+        "Ek Bharat Shreshtha Bharat" was announced by Hon'ble Prime Minister on 31st October, 2015 on the occasion of the 140th birth anniversary of Sardar Vallabhbhai Patel. The initiative aims to actively enhance interaction between people of diverse cultures living in different States and UTs in India, with the objective of promoting greater mutual understanding.
+      </p>
+    </div>
+  </section>
+
+  <!-- Vision & Mission -->
+  <section>
+    <div class="container">
+      <div class="vision-mission-grid">
+        <div class="card slide-up delay-100">
+          <div class="card-icon" style="background: rgba(255,153,51,0.1); color: var(--saffron);"><i class="fa-solid fa-eye"></i></div>
+          <div class="card-content">
+            <h3 class="card-title">Our Vision</h3>
+            <p>To celebrate the Unity in Diversity of our Nation and to maintain and strengthen the fabric of traditionally existing emotional bonds between the people of our Country.</p>
+          </div>
+        </div>
+        
+        <div class="card slide-up delay-200">
+          <div class="card-icon" style="background: rgba(19,136,8,0.1); color: var(--green);"><i class="fa-solid fa-bullseye"></i></div>
+          <div class="card-content">
+            <h3 class="card-title">Our Mission</h3>
+            <p>To promote the spirit of national integration through a deep and structured engagement between all Indian States and Union Territories through a year-long planned engagement between States.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Objectives -->
+  <section class="bg-white">
+    <div class="container">
+      <h2 class="section-title text-center slide-up">Our Objectives</h2>
+      <div class="grid grid-3">
+        <div class="card slide-up delay-100" style="text-align: center; align-items: center; padding-top: 30px;">
+          <i class="fa-solid fa-handshake-angle fa-3x" style="color: var(--navy-blue); margin-bottom: 20px;"></i>
+          <div class="card-content">
+            <h3 class="card-title">Promote Integration</h3>
+            <p>Showcase the rich heritage and culture, customs and traditions of either State for enabling people to understand and appreciate the diversity.</p>
+          </div>
+        </div>
+        <div class="card slide-up delay-200" style="text-align: center; align-items: center; padding-top: 30px;">
+          <i class="fa-solid fa-book-open-reader fa-3x" style="color: var(--saffron); margin-bottom: 20px;"></i>
+          <div class="card-content">
+            <h3 class="card-title">Exchange Knowledge</h3>
+            <p>Create an environment which promotes learning between States by sharing best practices and experiences.</p>
+          </div>
+        </div>
+        <div class="card slide-up delay-300" style="text-align: center; align-items: center; padding-top: 30px;">
+          <i class="fa-solid fa-people-group fa-3x" style="color: var(--green); margin-bottom: 20px;"></i>
+          <div class="card-content">
+            <h3 class="card-title">Foster Connections</h3>
+            <p>Establish long-term engagements and build strong relationships among the students of IIT Jammu hailing from different regions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- History Timeline -->
+  <section>
+    <div class="container">
+      <h2 class="section-title text-center slide-up">Club Journey</h2>
+      <div class="timeline slide-up delay-100">
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <h3 style="color: var(--saffron);">2022</h3>
+            <p><strong>Foundation</strong><br>The EBSB Club was officially inaugurated at IIT Jammu to spearhead cultural exchange programs.</p>
+          </div>
+        </div>
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <h3 style="color: var(--green);">2023</h3>
+            <p><strong>First Mega Event</strong><br>Successfully hosted the 'Cultural Fest 2023' with participation from over 500 students.</p>
+          </div>
+        </div>
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <h3 style="color: var(--navy-blue);">2024</h3>
+            <p><strong>Expansion</strong><br>Introduced Peer Learning Circles and Technical Events to bridge culture with modern technology.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <!-- (Footer content reused) -->
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 EBSB Club, IIT Jammu. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

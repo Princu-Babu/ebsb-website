@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | EBSB Club</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    @media(max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    .contact-info-card {
+      background: var(--navy-blue);
+      color: var(--white);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: var(--shadow-lg);
+    }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 30px;
+    }
+    .contact-item-icon {
+      font-size: 1.5rem;
+      color: var(--saffron);
+      margin-right: 20px;
+      width: 30px;
+      text-align: center;
+    }
+    .contact-form {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-color);
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--dark-gray);
+    }
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-family: inherit;
+      transition: border-color 0.3s;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--saffron);
+    }
+    textarea.form-control {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .qr-container {
+      background: var(--white);
+      padding: 15px;
+      border-radius: 12px;
+      display: inline-block;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .qr-container img {
+      width: 150px;
+      height: 150px;
+      background: #eee;
+      display: block;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-transition"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-hands-holding-circle"></i></div>
+        <span>EBSB <span style="color: var(--saffron);">IIT Jammu</span></span>
+      </a>
+      <button class="mobile-menu-btn" aria-label="Toggle Menu"><i class="fa-solid fa-bars"></i></button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="achievements.html">Achievements</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header slide-in-left">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <p>Have questions or want to join the club? Reach out to us!</p>
+    </div>
+  </header>
+
+  <!-- Contact Section -->
+  <section class="bg-white">
+    <div class="container">
+      <div class="contact-grid">
+        
+        <!-- Contact Info -->
+        <div class="contact-info-card slide-up delay-100">
+          <h2 style="color: var(--white); margin-bottom: 30px;">Get In Touch</h2>
+          
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div>
+              <h3 style="color: var(--white); font-size: 1.1rem; margin-bottom: 5px;">Email Us</h3>
+              <p style="color: #cbd5e1;">ebsb@iitjammu.ac.in</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <h3 style="color: var(--white); font-size: 1.1rem; margin-bottom: 5px;">Location</h3>
+              <p style="color: #cbd5e1;">IIT Jammu, Jagti, NH-44, Nagrota, Jammu, J&K - 181221</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fa-solid fa-share-nodes"></i></div>
+            <div>
+              <h3 style="color: var(--white); font-size: 1.1rem; margin-bottom: 10px;">Social Media</h3>
+              <div style="display: flex; gap: 15px;">
+                <a href="#" style="font-size: 1.5rem; color: #cbd5e1;"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" style="font-size: 1.5rem; color: #cbd5e1;"><i class="fa-brands fa-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="qr-container">
+            <div style="width: 150px; height: 150px; background: #ddd; display: flex; align-items: center; justify-content: center; color: #999; margin-bottom: 10px; border-radius: 8px;">
+              <i class="fa-solid fa-qrcode fa-4x"></i>
+            </div>
+            <p style="color: var(--navy-blue); font-weight: 600; font-size: 0.9rem;">Join WhatsApp Community</p>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form slide-up delay-200">
+          <h2 style="color: var(--navy-blue); margin-bottom: 30px;">Send a Message</h2>
+          <form action="#">
+            <div class="form-group">
+              <label class="form-label" for="name">Full Name</label>
+              <input type="text" id="name" class="form-control" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address</label>
+              <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="subject">Subject</label>
+              <input type="text" id="subject" class="form-control" placeholder="How can we help?" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="message">Message</label>
+              <textarea id="message" class="form-control" placeholder="Your message here..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 EBSB Club, IIT Jammu. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

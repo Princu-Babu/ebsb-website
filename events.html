@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events | EBSB Club</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .event-category { margin-bottom: 60px; }
+    .event-card {
+      display: flex;
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .event-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+    .event-img {
+      width: 300px;
+      background-color: var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94a3b8;
+    }
+    .event-details {
+      padding: 30px;
+      flex: 1;
+    }
+    .event-meta {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+    .event-meta i { color: var(--saffron); }
+    @media(max-width: 768px) {
+      .event-card { flex-direction: column; }
+      .event-img { width: 100%; height: 200px; }
+    }
+    .category-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      padding: 10px 24px;
+      border-radius: 30px;
+      background: var(--white);
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--saffron);
+      color: var(--white);
+      border-color: var(--saffron);
+    }
+  </style>
+</head>
+<body>
+  <div class="page-transition"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-hands-holding-circle"></i></div>
+        <span>EBSB <span style="color: var(--saffron);">IIT Jammu</span></span>
+      </a>
+      <button class="mobile-menu-btn" aria-label="Toggle Menu"><i class="fa-solid fa-bars"></i></button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="events.html" class="active">Events</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="achievements.html">Achievements</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header slide-in-left">
+    <div class="container">
+      <h1>Events & Programs</h1>
+      <p>Explore the diverse range of cultural, educational, and technical events we organize.</p>
+    </div>
+  </header>
+
+  <!-- Events Listing -->
+  <section class="bg-white">
+    <div class="container">
+      
+      <div class="category-tabs slide-up">
+        <button class="tab-btn active">All Events</button>
+        <button class="tab-btn">Cultural</button>
+        <button class="tab-btn">Educational</button>
+        <button class="tab-btn">Technical</button>
+      </div>
+
+      <!-- Cultural Events -->
+      <div class="event-category slide-up delay-100">
+        <h2 style="color: var(--saffron); margin-bottom: 20px;"><i class="fa-solid fa-masks-theater"></i> Cultural Events</h2>
+        <div class="grid" style="grid-template-columns: 1fr; gap: 30px;">
+          
+          <div class="event-card">
+            <div class="event-img"><i class="fa-solid fa-image fa-3x"></i></div>
+            <div class="event-details">
+              <div class="event-meta">
+                <span><i class="fa-regular fa-calendar"></i> Oct 15, 2026</span>
+                <span><i class="fa-solid fa-location-dot"></i> Main Auditorium</span>
+              </div>
+              <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Navratri Dandiya Night</h3>
+              <p style="margin-bottom: 20px;">Join us for an evening of dance, music, and celebration of the vibrant festival of Navratri.</p>
+              <a href="#" class="btn btn-outline">Read More</a>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <!-- Technical Events -->
+      <div class="event-category slide-up delay-200">
+        <h2 style="color: var(--navy-blue); margin-bottom: 20px;"><i class="fa-solid fa-microchip"></i> Technical Events</h2>
+        <div class="grid" style="grid-template-columns: 1fr; gap: 30px;">
+          
+          <div class="event-card">
+            <div class="event-img"><i class="fa-solid fa-image fa-3x"></i></div>
+            <div class="event-details">
+              <div class="event-meta">
+                <span><i class="fa-regular fa-calendar"></i> Nov 02, 2026</span>
+                <span><i class="fa-solid fa-location-dot"></i> Seminar Hall</span>
+              </div>
+              <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Arduino EVM Challenge</h3>
+              <p style="margin-bottom: 20px;">A hardware hackathon simulating electronic voting machines to promote technical awareness.</p>
+              <a href="#" class="btn btn-outline">Read More</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 EBSB Club, IIT Jammu. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

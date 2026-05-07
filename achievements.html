@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Achievements | EBSB Club</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .stat-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+      transition: transform 0.3s;
+    }
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--saffron);
+      margin-bottom: 10px;
+      font-family: var(--font-heading);
+    }
+    .stat-label {
+      font-size: 1.1rem;
+      color: var(--navy-blue);
+      font-weight: 500;
+    }
+    .achievement-item {
+      display: flex;
+      background: var(--white);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+      border-left: 4px solid var(--green);
+      align-items: center;
+    }
+    .achievement-icon {
+      font-size: 2rem;
+      color: var(--green);
+      margin-right: 20px;
+      width: 50px;
+      text-align: center;
+    }
+    .testimonial-card {
+      background: var(--light-gray);
+      padding: 30px;
+      border-radius: 16px;
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '\201C';
+      font-size: 4rem;
+      color: var(--saffron);
+      opacity: 0.2;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      font-family: serif;
+    }
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--navy-blue);
+    }
+  </style>
+</head>
+<body>
+  <div class="page-transition"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-hands-holding-circle"></i></div>
+        <span>EBSB <span style="color: var(--saffron);">IIT Jammu</span></span>
+      </a>
+      <button class="mobile-menu-btn" aria-label="Toggle Menu"><i class="fa-solid fa-bars"></i></button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="achievements.html" class="active">Achievements</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header slide-in-left">
+    <div class="container">
+      <h1>Our Achievements</h1>
+      <p>A look back at our milestones, awards, and the impact we've created.</p>
+    </div>
+  </header>
+
+  <!-- Statistics -->
+  <section class="bg-white">
+    <div class="container">
+      <h2 class="section-title text-center slide-up">By The Numbers</h2>
+      <div class="grid grid-4 slide-up delay-100">
+        <div class="stat-card">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Events Hosted</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">2000+</div>
+          <div class="stat-label">Participants</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">States Represented</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">5</div>
+          <div class="stat-label">Awards Won</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards & Milestones -->
+  <section>
+    <div class="container" style="max-width: 800px;">
+      <h2 class="section-title text-center slide-up">Awards & Milestones</h2>
+      
+      <div class="achievement-item slide-up delay-100">
+        <div class="achievement-icon"><i class="fa-solid fa-trophy"></i></div>
+        <div>
+          <h3 style="margin-bottom: 5px;">Best Cultural Club 2025</h3>
+          <p style="color: #64748b; font-size: 0.95rem;">Awarded by the Student Gymkhana, IIT Jammu for outstanding contribution to campus life.</p>
+        </div>
+      </div>
+
+      <div class="achievement-item slide-up delay-200" style="border-left-color: var(--saffron);">
+        <div class="achievement-icon" style="color: var(--saffron);"><i class="fa-solid fa-handshake"></i></div>
+        <div>
+          <h3 style="margin-bottom: 5px;">State Partnership Excellence</h3>
+          <p style="color: #64748b; font-size: 0.95rem;">Recognized for effectively collaborating with paired state institutes for cultural exchange.</p>
+        </div>
+      </div>
+
+      <div class="achievement-item slide-up delay-300" style="border-left-color: var(--navy-blue);">
+        <div class="achievement-icon" style="color: var(--navy-blue);"><i class="fa-solid fa-newspaper"></i></div>
+        <div>
+          <h3 style="margin-bottom: 5px;">Featured in National Media</h3>
+          <p style="color: #64748b; font-size: 0.95rem;">Our Hackathon for Heritage preservation was covered by leading national newspapers.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="bg-white">
+    <div class="container">
+      <h2 class="section-title text-center slide-up">What People Say</h2>
+      <div class="grid grid-3">
+        <div class="testimonial-card slide-up delay-100">
+          <p class="testimonial-text">"EBSB has truly made IIT Jammu feel like a mini-India. The events are vibrant and the community is incredibly welcoming."</p>
+          <div class="testimonial-author">- 3rd Year B.Tech Student</div>
+        </div>
+        <div class="testimonial-card slide-up delay-200">
+          <p class="testimonial-text">"The peer learning circles helped me understand the history and language of states I had never visited. It's a brilliant initiative."</p>
+          <div class="testimonial-author">- Faculty Member</div>
+        </div>
+        <div class="testimonial-card slide-up delay-300">
+          <p class="testimonial-text">"Organizing the Arduino EVM Challenge with EBSB was a perfect blend of our cultural democratic values and technology."</p>
+          <div class="testimonial-author">- Tech Club Coordinator</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 EBSB Club, IIT Jammu. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
