@@ -8,20 +8,18 @@
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    .team-member {
-      background: var(--white);
+    .team-poster {
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      text-align: center;
-      transition: transform 0.3s;
-      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-md);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: var(--white);
     }
-    .team-member:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
+    .team-poster:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
     }
-    .member-img {
+    .team-poster img {
       width: 100%;
       height: 250px;
       background-color: var(--light-gray);
@@ -92,8 +90,8 @@
     </div>
   </header>
 
-  <!-- Faculty Coordinator -->
-  <section class="bg-white">
+  <!-- Team Gallery -->
+  <section class="bg-white" style="padding-top: 40px; padding-bottom: 80px;">
     <div class="container">
       <h2 class="section-title text-center slide-up">Faculty Coordinator</h2>
       <div class="grid" style="max-width: 400px; margin: 0 auto;">
@@ -108,9 +106,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Core Team -->
   <section>
@@ -298,6 +293,35 @@
             </div>
           </div>
         </div>
+
+        <div class="team-poster slide-up delay-300">
+          <img src="team/Design and web-d head.PNG" alt="Design and Web-D Head">
+        </div>
+
+        <div class="team-poster slide-up delay-300">
+          <img src="team/EVENT MANAGEMENT HEAD.PNG" alt="Event Management Head">
+        </div>
+
+        <div class="team-poster slide-up delay-300">
+          <img src="team/EVENT MANAGEMENT HEAD (2).PNG" alt="Event Management Head (2)">
+        </div>
+
+        <div class="team-poster slide-up delay-400">
+          <img src="team/Inventory head.PNG" alt="Inventory Head">
+        </div>
+
+        <div class="team-poster slide-up delay-400">
+          <img src="team/Media coverage head.PNG" alt="Media Coverage Head">
+        </div>
+
+        <div class="team-poster slide-up delay-400">
+          <img src="team/OUTREACH HEAD.PNG" alt="Outreach Head">
+        </div>
+
+        <div class="team-poster slide-up delay-400">
+          <img src="team/social media head.PNG" alt="Social Media Head">
+        </div>
+
       </div>
     </div>
   </section>

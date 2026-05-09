@@ -17,6 +17,7 @@
       box-shadow: var(--shadow-sm);
       border: 1px solid var(--border-color);
       transition: transform 0.3s, box-shadow 0.3s;
+      margin-bottom: 30px;
     }
     .event-card:hover {
       transform: translateY(-5px);
@@ -24,37 +25,54 @@
     }
     .event-img {
       width: 300px;
+      min-width: 300px;
       background-color: var(--light-gray);
       display: flex;
       align-items: center;
       justify-content: center;
       color: #94a3b8;
     }
+    .event-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
     .event-details {
       padding: 30px;
       flex: 1;
+      display: flex;
+      flex-direction: column;
     }
     .event-meta {
       display: flex;
       gap: 15px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       font-size: 0.9rem;
       color: #64748b;
+      flex-wrap: wrap;
     }
     .event-meta i { color: var(--saffron); }
+    .event-category-tag {
+      background: rgba(255, 153, 51, 0.1);
+      color: var(--saffron);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 500;
+      font-size: 0.8rem;
+    }
     @media(max-width: 768px) {
       .event-card { flex-direction: column; }
-      .event-img { width: 100%; height: 200px; }
+      .event-img { width: 100%; height: 200px; min-width: auto; }
     }
     .category-tabs {
       display: flex;
       justify-content: center;
-      gap: 15px;
+      gap: 10px;
       margin-bottom: 40px;
       flex-wrap: wrap;
     }
     .tab-btn {
-      padding: 10px 24px;
+      padding: 8px 20px;
       border-radius: 30px;
       background: var(--white);
       border: 1px solid var(--border-color);
@@ -66,6 +84,118 @@
       background: var(--saffron);
       color: var(--white);
       border-color: var(--saffron);
+    }
+    .event-item.hidden {
+      display: none !important;
+    }
+
+    /* Modal CSS */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 20px;
+    }
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-content {
+      background: var(--white);
+      width: 100%;
+      max-width: 800px;
+      max-height: 90vh;
+      border-radius: 16px;
+      overflow-y: auto;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+      padding: 40px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    @media(max-width: 768px) {
+      .modal-content {
+        padding: 25px;
+      }
+    }
+    .modal-overlay.active .modal-content {
+      transform: translateY(0);
+    }
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--light-gray);
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--navy);
+      transition: all 0.3s;
+    }
+    .close-modal:hover {
+      background: var(--saffron);
+      color: var(--white);
+    }
+    .modal-header h2 {
+      color: var(--navy);
+      margin-bottom: 15px;
+      font-size: 2rem;
+    }
+    .modal-meta {
+      color: #64748b;
+      font-size: 0.95rem;
+      margin-bottom: 25px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .modal-meta i {
+      color: var(--saffron);
+    }
+    .modal-body p {
+      margin-bottom: 15px;
+      line-height: 1.7;
+      color: #334155;
+    }
+    .modal-body h3 {
+      margin-top: 30px;
+      margin-bottom: 15px;
+      color: var(--saffron);
+      font-size: 1.3rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+    .modal-image-placeholder {
+      width: 100%;
+      height: 300px;
+      background: var(--light-gray);
+      border-radius: 12px;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94a3b8;
+    }
+    
+    .read-more-btn {
+      margin-top: auto;
+      align-self: flex-start;
     }
   </style>
 </head>
@@ -104,20 +234,21 @@
   </header>
 
   <!-- Events Listing -->
-  <section class="bg-white">
+  <section class="bg-white" style="padding-top: 40px;">
     <div class="container">
       
-      <div class="category-tabs slide-up">
-        <button class="tab-btn active">All Events</button>
-        <button class="tab-btn">Cultural</button>
-        <button class="tab-btn">Educational</button>
-        <button class="tab-btn">Technical</button>
+      <div class="category-tabs slide-up" id="category-filters">
+        <button class="tab-btn active" data-filter="all">All Events</button>
+        <button class="tab-btn" data-filter="cultural">Cultural</button>
+        <button class="tab-btn" data-filter="cultural-exchange">Cultural Exchange</button>
+        <button class="tab-btn" data-filter="national">National & Commemorative</button>
+        <button class="tab-btn" data-filter="creative">Creative & Artistic</button>
+        <button class="tab-btn" data-filter="social">Social Awareness</button>
+        <button class="tab-btn" data-filter="technical">Technical & Innovative</button>
       </div>
 
-      <!-- Cultural Events -->
-      <div class="event-category slide-up delay-100">
-        <h2 style="color: var(--saffron); margin-bottom: 20px;"><i class="fa-solid fa-masks-theater"></i> Cultural Events</h2>
-        <div class="grid" style="grid-template-columns: 1fr; gap: 30px;">
+      <div class='event-category slide-up delay-100'>
+        <div class='grid' id="events-grid" style='grid-template-columns: 1fr;'>
           
           <div class="event-card">
             <div class="event-img"><i class="fa-solid fa-image fa-3x"></i></div>
@@ -262,9 +393,6 @@
               <p style="margin-bottom: 20px;">Spring New Year celebrations honoring Ugadi, Gudi Padwa and diverse traditions across India.</p>
             </div>
           </div>
-          
-        </div>
-      </div>
 
       <!-- Educational & National Events -->
       <div class="event-category slide-up delay-200">
@@ -353,9 +481,29 @@
 
         </div>
       </div>
-
+      
     </div>
   </section>
+
+  <!-- Modal Template -->
+  <div class="modal-overlay" id="event-modal">
+    <div class="modal-content">
+      <button class="close-modal" id="close-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-image-placeholder">
+        <i class="fa-solid fa-image fa-4x"></i>
+        <p style="margin-left: 15px;">Image Placeholder</p>
+      </div>
+      <div class="modal-header">
+        <h2 id="modal-title">Event Title</h2>
+      </div>
+      <div class="modal-meta" id="modal-meta">
+        <!-- Date and Category -->
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Content -->
+      </div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="footer">
@@ -397,5 +545,74 @@
     });
   </script>
   <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Filtering logic
+      const filterBtns = document.querySelectorAll('.tab-btn');
+      const eventItems = document.querySelectorAll('.event-item');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Remove active class
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          
+          const filter = btn.getAttribute('data-filter');
+          
+          eventItems.forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category').includes(filter)) {
+              item.classList.remove('hidden');
+            } else {
+              item.classList.add('hidden');
+            }
+          });
+        });
+      });
+
+      // Modal logic
+      const modalOverlay = document.getElementById('event-modal');
+      const closeModalBtn = document.getElementById('close-modal-btn');
+      const modalTitle = document.getElementById('modal-title');
+      const modalMeta = document.getElementById('modal-meta');
+      const modalBody = document.getElementById('modal-body');
+      
+      const readMoreBtns = document.querySelectorAll('.read-more-btn');
+      
+      // Store event data
+      const eventsData = {"rakshabandhan": {"id": "rakshabandhan", "title": "Rakshabandhan \u2013 Har Ghar Tiranga", "date": "07-08-2025", "category": "cultural", "categoryLabel": "Cultural Events", "short_desc": "Rakhi Making Workshop and Collaboration with Kritash", "content": "<p>As part of the Har Ghar Tiranga initiative, the EBSB Club IIT Jammu organized a Rakhi Making Workshop to promote patriotism, unity, and gratitude towards the armed forces. Students enthusiastically participated in crafting handmade rakhis symbolizing respect, appreciation, and emotional connection with the soldiers safeguarding the nation at the borders.</p><p>The workshop was conducted in collaboration with Kritash Club, through which the handmade rakhis were planned to be taken to border areas and tied to soldiers as a gesture of solidarity and national pride. The event reflected the spirit of unity, cultural values, and collective respect for the nation\u2019s defenders while encouraging creativity and meaningful participation among students.</p><h3>Sub-events</h3><ul><li>Rakhi Making Workshop</li><li>Collaboration with Kritash</li></ul>"}, "janmashtami": {"id": "janmashtami", "title": "Janmashtami - A Journey of Gopaalak to Geetaachaarya", "date": "16-08-2025", "category": "cultural", "categoryLabel": "Cultural Events", "short_desc": "Dahi Handi and Cultural Performances", "content": "<h3>Dahi Handi</h3><p>The traditional Dahi Handi celebration was organized as part of Krishna Janmashtami to promote teamwork, unity, and cultural exchange among the IIT Jammu community. A decorated earthen pot filled with curd, butter, and sweets was suspended at a designated height, and student teams participated in a pyramid-making challenge to break the handi, reflecting the spirit of collective effort and celebration associated with the festival.</p><h3>Cultural Performances</h3><p>Cultural performances were organized to celebrate Krishna as a figure deeply reflected in the literature, music, and traditions of various regions across India. The event included bhajans, kirtans, storytelling, poetry, and other cultural interactions that highlighted the diverse yet interconnected portrayals of Krishna in different Indian languages and traditions, promoting the spirit of unity in diversity and shared cultural heritage.</p>"}, "onam": {"id": "onam", "title": "Onam 2025 \u2013 Unity in Bloom", "date": "05-09-2025", "category": "cultural", "categoryLabel": "Cultural Events", "short_desc": "Pookkalam, Onam Sadhya, and Cultural Discussion & Exchange", "content": "<h3>Pookkalam</h3><p>A collaborative Pookkalam (floral carpet) activity was organized as part of the Onam celebrations, with participation from students, staff, and faculty members. The activity promoted teamwork, creativity, and cultural appreciation while showcasing the traditional floral art associated with Onam.</p><h3>Onam Sadhya</h3><p>An Onam Sadhya, the traditional vegetarian festive feast of Kerala, was organized to introduce participants to the culinary traditions of the festival. The celebration concluded with the serving of Payasam, a special Onam dessert symbolizing joy and togetherness.</p><h3>Cultural Discussion & Exchange</h3><p>A multilingual cultural discussion session was conducted as part of the Onam celebrations, where participants shared the significance, traditions, and values of Onam in more than nine Indian languages. The session promoted linguistic diversity, cultural exchange, and the spirit of unity in diversity by encouraging students from different regions to present and interact in their native languages.</p>"}, "durgashtami": {"id": "durgashtami", "title": "Durgashtami", "date": "30-09-2025", "category": "cultural", "categoryLabel": "Cultural Events", "short_desc": "Cultural Performances emphasizing Women Empowerment", "content": "<h3>Cultural Performances</h3><p>Durgashtami celebrations were organized to highlight Durga as a symbol of strength, resilience, courage, and the triumph of good over evil. The event showcased how Goddess Durga is celebrated across different regions of India through diverse yet interconnected traditions, including the Durga Puja of West Bengal and the Navaratri celebrations of western and southern India.</p><p>Cultural performances including dance, music, and traditional presentations were conducted to reflect the rich artistic and devotional traditions associated with Durgashtami and Navaratri. The celebration promoted cultural appreciation, active participation, and the spirit of unity in diversity within the IIT Jammu community while emphasizing the universal message of Shakti, harmony, and collective strength.</p>"}, "wall-of-evil": {"id": "wall-of-evil", "title": "Wall of Evil \u2013 Burn the Negativity", "date": "02-10-2025", "category": "social", "categoryLabel": "Social Awareness & Value-Based Events", "short_desc": "Wall of Evil Poster Activity, Symbolic Burning Ceremony & Reflection", "content": "<h3>Wall of Evil</h3><p>The \u201cWall of Evil\u201d activity was organized during Dussehra to symbolize the victory of good over evil and to spread awareness about modern-day social negativities. Inspired by the ten-headed Ravana, the installation represented various societal evils such as anger, greed, jealousy, corruption, discrimination, fear, hatred, and pollution.</p><p>A large interactive \u201cWall of Evil\u201d poster was created near Egret Hostel, where participants wrote additional social evils and negative thoughts on slips and pasted them onto the wall. The activity encouraged collective reflection on overcoming negativity through unity and social responsibility.</p><p>The event concluded with a symbolic burning ritual representing the destruction of evil and the triumph of righteousness, inspired by the diverse Dussehra traditions celebrated across India. A reflection and pledge session was also conducted, where students collectively pledged to spread positivity, harmony, and goodness within society.</p>"}, "gandhi-shastri": {"id": "gandhi-shastri", "title": "Gandhi\u2013Shastri Jayanthi", "date": "02-10-2025", "category": "national", "categoryLabel": "National & Commemorative Events", "short_desc": "Discussion on Official Language Act, 1963", "content": "<p>On the occasion of the birth anniversaries of Mahatma Gandhi and Lal Bahadur Shastri, a group discussion session was organized in collaboration with students from Law School Jammu focusing on the impact of the Official Language Act, 1963 in promoting unity in diversity in India. Participants explored the historical context and significance of the Official Language Amendment Bill introduced by Lal Bahadur Shastri and discussed its influence on education, governance, culture, and linguistic harmony in modern India.</p><p>As part of the session, students referred to selected parliamentary proceedings and engaged in discussions on the advantages, challenges, and future implications of India\u2019s official language policies in a multilingual society. The event encouraged constitutional awareness, critical thinking, and public speaking while aligning with the nationwide celebration of \u201cHamara Samvidhan, Hamara Swabhimaan\u201d commemorating 75 years of the Constitution of India.</p>"}, "diwali": {"id": "diwali", "title": "Diwali \u2013 Radiance of Unity", "date": "17-10-2025 to 20-10-2025", "category": "cultural technical", "categoryLabel": "Cultural / Technical Events", "short_desc": "IIT Jammu Diya Sketch, Engineering-Themed Workshops & Campus Illumination", "content": "<h3>Diwali \u2013 Festival of Lights and Unity</h3><p>Diwali celebrations were organized to highlight the festival as a symbol of the triumph of good over evil, knowledge over ignorance, and hope over despair. The celebration reflected the spirit of Ek Bharat Shreshtha Bharat by showcasing how Diwali is celebrated in diverse forms across India while promoting unity, harmony, and cultural pride within the IIT Jammu community.</p><h3>IIT Jammu Diya Sketch</h3><p>A large illuminated sketch representing IIT Jammu was created on the football ground using more than 14,000 diyas. Volunteers carefully arranged the diyas to form artistic representations of the institute\u2019s identity, symbolizing enlightenment, innovation, unity, and collective progress. The glowing installation reflected institutional pride and the spirit of togetherness among students.</p><h3>EBSB Diya Sketch</h3><p>A separate diya installation featuring the EBSB identity and themes of unity in diversity was also created using diyas. The artwork symbolized the cultural interconnectedness of India and highlighted how diverse communities come together through shared celebrations and traditions.</p><h3>Diya Making, Painting & Decorating Workshop</h3><p>A Diya Rangoli Workshop was organized where students designed, painted, and decorated diyas inspired by Indian cultural traditions as well as engineering and scientific concepts. Participants created artistic designs based on regional folk art, tribal motifs, engineering diagrams, coding patterns, atomic structures, phase diagrams, and other technical themes, blending creativity with innovation.</p><h3>Campus Diya Illumination</h3><p>Diyas prepared during the workshop were displayed and illuminated across selected areas of the IIT Jammu campus, including pathways, common spaces, and institute premises. The collective lighting ceremony created a vibrant festive atmosphere symbolizing positivity, peace, and unity across the campus community.</p><h3>Engineering-Themed Rangoli Competition</h3><p>An engineering-themed Rangoli Competition was conducted to encourage students to combine creativity with technical imagination. Participants designed rangolis inspired by concepts such as circuit diagrams, mechanical systems, coding structures, chemical formulas, engineering flowcharts, and scientific patterns, showcasing innovation while celebrating the festive spirit of Diwali.</p>"}, "tribal-cuisine": {"id": "tribal-cuisine", "title": "Tribal Cuisine Unity Carnival", "date": "31-10-2025", "category": "cultural-exchange", "categoryLabel": "Cultural Exchange & Heritage Events", "short_desc": "Eromba, Dhuska, Nachani Bhakar + Pithala, and Suan Kheer", "content": "<h3>Tribal Cuisine Unity Carnival</h3><p>The Tribal Cuisine Unity Carnival was organized on the occasion of National Unity Day as part of Janjatiya Gaurav Varsh 2025, commemorating the 150th birth anniversary of Birsa Munda. Organized by the EBSB Club in collaboration with Food Tinkers Club IIT Jammu, the event celebrated the rich tribal heritage, culinary traditions, and cultural diversity of India through food, storytelling, and cultural exchange.</p><p>Participants represented different states and tribal communities by preparing authentic tribal dishes and sharing their cultural significance, traditional preparation methods, and nutritional value. The event promoted awareness about sustainable and healthy indigenous food practices while reflecting the EBSB vision of unity in diversity.</p><h3>Suan Kheer</h3><p>Suan Kheer is a traditional tribal dessert prepared using indigenous grains and milk, known for its nutritional richness and cultural significance. The dish reflects the use of locally grown grains in tribal communities and highlights traditional methods of preparing healthy festive sweets.</p><h3>Nachani Bhakar with Pithala / Bambusa Arundinacea</h3><p>Nachani Bhakar is a nutritious millet roti served with Pithala, a protein-rich gram flour preparation, or Bambusa Arundinacea, a bamboo shoot-based tribal delicacy. The dish reflects the balanced and wholesome dietary traditions followed in tribal regions using locally available ingredients.</p><h3>Eromba</h3><p>Eromba is a traditional spicy mashed vegetable preparation from the tribal communities of Northeast India. Prepared using boiled vegetables, local herbs, and spices, the dish showcases indigenous cooking styles and the distinct flavors of northeastern tribal cuisine.</p><h3>Dhuska</h3><p>Dhuska is a traditional rice-and-lentil-based tribal delicacy commonly prepared in eastern tribal regions of India. The dish reflects local culinary techniques and is valued for its simplicity, taste, and nutritional content.</p>"}, "guru-nanak": {"id": "guru-nanak", "title": "Reflections on the Teachings of Guru Nanak Dev Ji", "date": "05-11-2025", "category": "cultural-exchange", "categoryLabel": "Cultural Exchange & Heritage Events", "short_desc": "A Cultural Exchange of Values and Harmony", "content": "<h3>Reflections on the Teachings of Guru Nanak Dev Ji \u2013 A Cultural Exchange of Values and Harmony</h3><p>Guru Nanak Gurpurab was celebrated to honor the teachings and values of Guru Nanak, emphasizing equality, truth, service, compassion, and devotion. The event highlighted how Guru Nanak Dev Ji\u2019s principles continue to inspire harmony and unity across communities and cultures.</p><h3>Reflection Sharing</h3><p>Students and staff participated in a reflection-sharing session discussing the core teachings of Guru Nanak Dev Ji, including Vaand Chhako (sharing with others), Kirat Karo (earning honestly), and Naam Japo (remembering the divine). Participants shared their thoughts in different Indian languages, promoting linguistic diversity and cultural inclusivity in alignment with the spirit of Ek Bharat Shreshtha Bharat.</p><h3>Narration on Sikh History & Punjab\u2019s Heritage</h3><p>A cultural narration session was conducted highlighting the history of Sikhism, the teachings of Sikh Gurus, and the cultural richness of Punjab. The session focused on the values of Seva (selfless service), equality, courage, and community harmony deeply rooted in Sikh traditions.</p><h3>Poem & Song Presentations</h3><p>Students presented poems, devotional songs, and cultural performances inspired by the life and teachings of Guru Nanak Dev Ji. The performances centered around themes of peace, unity, devotion, and humanity, creating a spiritually enriching and culturally engaging atmosphere.</p><h3>Cultural Connection Segment</h3><p>Participants from different states shared similar moral, spiritual, and cultural values from their own regional traditions that aligned with Guru Nanak Dev Ji\u2019s teachings. This interactive segment encouraged inter-state understanding and highlighted the shared ethical foundations present across Indian cultures.</p><h3>Kada Prasad Distribution</h3><p>Kada Prasad, the traditional sacred offering prepared using wheat flour, ghee, and sugar, was distributed among participants as a symbol of equality, sharing, and selfless service. The activity introduced participants to an important aspect of Sikh tradition while reinforcing the EBSB values of unity, respect, and togetherness.</p>"}, "youth-day": {"id": "youth-day", "title": "National Youth Day 2026", "date": "12-01-2026", "category": "national", "categoryLabel": "National & Commemorative Events", "short_desc": "Screening of Chaar Sahibzade, Peer Learning Circle & Group Discussion", "content": "<h3>National Youth Day & Veer Baal Diwas</h3><p>Veer Baal Diwas and National Youth Day were observed through a special educational and cultural event organized by the EBSB Club to honor the courage, sacrifice, moral strength, and youth ideals represented by the Sahibzadas of Guru Gobind Singh and the teachings of Swami Vivekananda. The event aimed to inspire students with values of bravery, resilience, leadership, integrity, and national unity while promoting cultural harmony and ethical awareness.</p><h3>Chaar Sahibzade Screening</h3><p>An animated screening of Chaar Sahibzade was organized to acquaint students with the heroic sacrifices and unwavering courage of the Sahibzadas of Guru Gobind Singh Ji. The screening served as an educational and inspirational medium, helping students emotionally and intellectually connect with India\u2019s historical and cultural legacy.</p><h3>Peer Learning Circle & Group Discussion</h3><p>Following the screening, a peer learning circle and group discussion session was conducted on the theme \u201cCourage and Sacrifice: Lessons from the Sahibzadas and Swami Vivekananda for Today\u2019s Generation.\u201d Students reflected on the relevance of these timeless values in contemporary society and discussed themes such as leadership, ethical decision-making, social responsibility, self-discipline, and nation-building.</p><p>The interactive discussion encouraged critical thinking, peer-to-peer learning, and meaningful dialogue among students from diverse backgrounds while reinforcing the EBSB vision of unity in diversity, youth empowerment, and shared cultural heritage.</p>"}, "sankranti": {"id": "sankranti", "title": "Sankranti 2026 - India's Harvest Festival", "date": "13-01-2026 to 15-01-2026", "category": "cultural", "categoryLabel": "Cultural Events", "short_desc": "Kite Festival, Lohri Celebration, and Pongal Competition", "content": "<p>Makara Sankranti celebrations were organized as a pan-Indian harvest festival event under the Ek Bharat Shreshtha Bharat initiative, highlighting the shared agricultural traditions that unite diverse cultures across India. The celebration showcased how harvest festivals are observed in different regions under various names such as Pongal, Lohri, Uttarayan, Magh Bihu, Suggi, Poush Sankranti, Maghi, Tusu Parab, and Pedda Panduga, reflecting gratitude toward nature, farmers, and the Sun God.</p><p>Through activities including a Kite Festival, Lohri cultural celebration, and Pongal Competition, the event promoted cultural exchange, inclusivity, and unity in diversity while introducing students to the varied regional expressions of India\u2019s harvest traditions.</p><h3>Kite Festival \u2013 Uttarayan Celebration</h3><p>A Kite Festival was organized to represent the spirit of Uttarayan and Makara Sankranti celebrations observed across western and central India. Students participated in kite flying activities symbolizing joy, hope, positivity, and new beginnings associated with the harvest season. The event reflected the collective festive spirit celebrated during Uttarayan in Gujarat and related harvest traditions across multiple Indian regions.</p><h3>Lohri Celebration & Cultural Jamming Session</h3><p>A Lohri celebration featuring a symbolic bonfire and cultural jamming session was conducted to represent the harvest traditions of northern and northeastern India. The event included music, cultural interactions, and community participation inspired by festivals such as Lohri, Magh Bihu, and Gaan-Ngai. The celebration emphasized gratitude toward farmers and nature while promoting togetherness, storytelling, and cultural harmony through shared festive experiences.</p><h3>Pongal Competition \u2013 Culinary Heritage & Cultural Exchange</h3><p>A Pongal-making competition was organized to celebrate the culinary traditions associated with harvest festivals across India. Participants prepared traditional Pongal dishes while discussing similar food traditions connected with Makara Sankranti and regional harvest festivals. The activity encouraged experiential learning, cultural exchange, and appreciation of India\u2019s agricultural heritage through food, tradition, and community participation.</p>"}, "vasantha-panchami": {"id": "vasantha-panchami", "title": "Vasantha Panchami 2026 and Parakram Diwas 2026", "date": "23-01-2026", "category": "national", "categoryLabel": "National & Commemorative Events", "short_desc": "Cultural Performances, Literary Expressions & Patriotic Reflections", "content": "<p>Vasant Panchami and Parakram Diwas were celebrated together under the Ek Bharat Shreshtha Bharat initiative to highlight the themes of knowledge, creativity, patriotism, and national integration. The event showcased how Vasantha Panchami is celebrated across India in diverse forms such as Basant Panchami, Saraswati Puja, Sri Panchami, and Sonth Posthe, reflecting India\u2019s rich cultural plurality and shared traditions.</p><p>The celebration also commemorated the birth anniversary of Subhas Chandra Bose, honoring his ideals of courage, leadership, resilience, and unity. By combining cultural celebration with patriotic remembrance, the event promoted the spirit of unity in diversity through knowledge, art, literature, and national consciousness.</p><h3>Cultural Performances & Artistic Presentations</h3><p>A cultural programme featuring storytelling, singing, poetry recitation, and dance performances was organized to showcase regional expressions associated with Vasantha Panchami. Students presented performances in multiple Indian languages and artistic traditions, highlighting how the festival is celebrated differently across regions while reflecting shared values of learning, creativity, and harmony.</p><h3>Literary & Musical Expressions</h3><p>The event included devotional songs, folk music, literary recitations, and mythological narratives inspired by the traditions of Vasantha Panchami and the works of poets such as Amir Khusro and Nizamuddin Auliya. These presentations encouraged cultural exchange, artistic appreciation, and mutual respect among students from different backgrounds.</p><h3>Patriotic Reflection on Netaji Subhas Chandra Bose</h3><p>As part of the observance of Parakram Diwas, students reflected on the life, vision, and contributions of Netaji Subhas Chandra Bose through speeches, discussions, and presentations. The session emphasized values such as leadership, patriotism, discipline, and national unity, inspiring students to connect cultural heritage with social responsibility and nation-building.</p><h3>Intercultural Dialogue & National Integration</h3><p>The celebration provided a platform for students from different regions to interact, collaborate, and learn about diverse cultural traditions and patriotic values. Through multilingual performances and collective participation, the event strengthened cultural harmony, intercultural dialogue, and the EBSB vision of national integration through unity in diversity.</p>"}, "voters-day": {"id": "voters-day", "title": "National Voter's Day 2026", "date": "25-01-2026", "category": "national technical", "categoryLabel": "National & Technical Events", "short_desc": "Arduino-Based EVM Making Challenge: Democracy in Action", "content": "<p>National Voters' Day was observed through an innovative hands-on event titled \u201cArduino-Based EVM Making Challenge: Democracy in Action,\u201d organized by the EBSB Club to promote democratic awareness, responsible citizenship, and technical learning among students.</p><p>The event focused on designing and programming functional Electronic Voting Machine (EVM) prototypes using Arduino UNO, enabling participants to understand the practical working of India\u2019s electoral system. Students implemented simplified versions of different Indian election methods, including General Elections using the First Past the Post system, Rajya Sabha Preferential Voting, Vice Presidential Elimination Voting, and the Presidential Election system based on the Single Transferable Vote method.</p><p>Technical components, hardware support, and innovation facilities for the challenge were provided with support from Indian Institute of Entrepreneurship Development Cell (I2EDC). By combining electronics, programming, and civic education, the event encouraged experiential learning while helping students understand how democratic institutions function through logical algorithms and hardware systems.</p><p>The challenge promoted awareness about voting, constitutional values, democratic participation, and responsible citizenship while reinforcing the EBSB vision of unity in diversity through India\u2019s shared democratic framework.</p>"}, "draw-immortal": {"id": "draw-immortal", "title": "Draw the Immortal", "date": "15-02-2026", "category": "creative", "categoryLabel": "Creative & Artistic Events", "short_desc": "Visible Forms of Lord Shiva in Indian Art Traditions", "content": "<p>Draw the Immortal\u201d was organized as a cultural art competition on the occasion of Maha Shivaratri to explore the diverse artistic representations of Shiva across Indian traditions and regional art forms. Organized by the EBSB Club in collaboration with Artihc Club, the event encouraged students to creatively interpret Shiva through various artistic styles while promoting cultural awareness, artistic diversity, and unity in diversity.</p><p>Participants presented artworks inspired by meditative, ascetic, dynamic, symbolic, abstract, and nature-inspired forms of Shiva, including representations such as Shiva with Parvati and depictions of cosmic energy and elemental balance. Students drew inspiration from temple sculptures, classical bronzes, folk and tribal art, regional painting styles, architectural motifs, and contemporary reinterpretations from different parts of India.</p><p>The competition provided a platform for students to express themes of motion and stillness, transformation and continuity, harmony and duality, and balance and energy through visual art. Conducted in a secular, inclusive, and educational manner, the event highlighted how a shared cultural figure has been interpreted through diverse artistic traditions across India, reinforcing the EBSB vision of cultural exchange, regional inclusivity, and national integration through art and creativity.</p>"}, "mother-tongue-day": {"id": "mother-tongue-day", "title": "International Mother Tongue Day", "date": "21-02-2026", "category": "cultural-exchange", "categoryLabel": "Cultural Exchange & Heritage Events", "short_desc": "Listen Your Roots \u2013 Mother Tongue Singing", "content": "<p>International Mother Language Day was celebrated through the event \u201cListen Your Roots \u2013 Mother Tongue Singing,\u201d organized to promote linguistic diversity, cultural identity, and unity in diversity within the IIT Jammu community.</p><p>The event provided students, faculty, and staff with an open and inclusive platform to sing in their mother tongue and present songs related to their language, culture, experiences, and traditions. Participants from diverse linguistic backgrounds showcased the beauty and uniqueness of their native languages through musical performances, encouraging authentic self-expression and cultural pride.</p><p>The celebration emphasized the importance of mother tongues as a medium of identity, emotion, heritage, and cultural connection while fostering mutual respect, intercultural understanding, and appreciation for India\u2019s multilingual diversity. By encouraging free artistic expression without linguistic barriers, the event strengthened confidence, creativity, and the spirit of cultural harmony in alignment with the vision of Ek Bharat Shreshtha Bharat.</p>"}, "holi": {"id": "holi", "title": "Holi - Unity in Every Hue", "date": "03-03-2026 to 04-03-2026", "category": "cultural", "categoryLabel": "Cultural Events", "short_desc": "Holika Dahan and Rangwali Holi Celebrations", "content": "<p>Holi celebrations were organized under the theme \u201cUnity in Every Hue\u201d to promote cultural harmony, inclusivity, and unity in diversity through traditional and eco-friendly celebrations. The event highlighted how Holi is celebrated in diverse forms across different regions of India while bringing together students from varied cultural backgrounds under the spirit of Ek Bharat Shreshtha Bharat.</p><h3>Holika Dahan</h3><p>A traditional Holika Dahan ceremony was conducted as a symbolic ritual representing the victory of good over evil and the burning of negativity. Inspired by regional traditions observed across states such as Uttar Pradesh, Rajasthan, Gujarat, Maharashtra, Bihar, and Madhya Pradesh, the ceremony encouraged collective participation and cultural awareness while symbolizing harmony, positivity, and national integration.</p><h3>Rangwali Holi</h3><p>An eco-friendly Rangwali Holi celebration was organized to showcase the diverse regional traditions associated with Holi across India, including Rang Panchami, Basant Utsav, and various regional observances. Students participated in a colourful and inclusive celebration promoting cultural exchange, inter-state bonding, and respectful participation in alignment with the EBSB vision of unity in diversity.</p><p>Special emphasis was placed on safety and environmental responsibility throughout the celebration. Only eco-friendly, organic, and non-toxic colours were used, participation was completely voluntary with mutual consent respected, and celebrations were restricted to designated areas to ensure proper management and campus cleanliness. Limited water usage was maintained to promote sustainable and responsible celebration practices.</p>"}, "ugadi": {"id": "ugadi", "title": "Ugadi 2026 \u2013 Diversity of Lunar Almanac", "date": "19-03-2026", "category": "cultural", "categoryLabel": "Cultural Events", "short_desc": "Spring New Year Celebrations 2026, Ethnic Day, Ugadi & Gudi Padwa", "content": "<h3>Spring New Year Celebrations 2026</h3><p>The Spring New Year celebrations were organized under the Ek Bharat Shreshtha Bharat initiative to highlight the diverse New Year traditions celebrated across India, including Ugadi and Gudi Padwa. Through cultural activities, traditional practices, and student participation, the event promoted cultural exchange, unity in diversity, and appreciation of India\u2019s rich regional heritage.</p><h3>Ethnic Day</h3><p>An Ethnic Day was organized as part of the Spring New Year celebrations, where students attended classes dressed in traditional attire representing different regions of India. The activity created a festive atmosphere across the campus while encouraging students to proudly showcase their cultural heritage and traditions.</p><p>An informal cultural interaction and photo session was also conducted in common campus spaces, allowing students from diverse backgrounds to interact, celebrate together, and strengthen cultural bonding in alignment with the vision of Ek Bharat Shreshtha Bharat.</p><h3>Ugadi Celebration</h3><p>The Ugadi celebration included an introduction to the significance of Ugadi and other Spring New Year festivals celebrated across India. Participants were introduced to the cultural traditions, symbolism, and philosophical meaning associated with the festival.</p><p>As part of the celebration, Ugadi Pachadi was prepared and distributed among participants. The symbolic significance of the dish, representing different emotions and experiences of life such as joy, sorrow, anger, fear, and surprise, was explained to help students understand the deeper cultural values associated with the festival.</p><h3>Gudi Padwa Celebration</h3><p>A traditional Gudi Padwa celebration was organized to introduce students to Maharashtrian New Year traditions. A ceremonial \u201cGudi\u201d was installed following Maharashtrian customs using a decorated bamboo stick, bright cloth, neem and mango leaves, garlands, and an inverted pot symbolizing victory, prosperity, and good fortune.</p><p>The cultural and historical significance of hoisting the Gudi was explained to participants, creating awareness about the traditions and festive practices associated with Maharashtra while promoting intercultural understanding and celebration of regional diversity.</p>"}, "ambedkar": {"id": "ambedkar", "title": "Dr. Ambedkar\u2019s 136th Birth Anniversary", "date": "14-04-2026", "category": "national cultural", "categoryLabel": "National & Cultural Events", "short_desc": "Ambedkar Jayanthi, Vishu, and Puthandu Celebrations", "content": "<h3>Ambedkar Jayanthi</h3><p>B. R. Ambedkar Jayanti was observed to honor the life and contributions of the Architect of the Indian Constitution. A lookalike display of the Indian Constitution was showcased, followed by discussions on the values, teachings, and vision of Dr. Ambedkar related to equality, justice, education, and social harmony.</p><h3>Vishu</h3><p>Vishu was celebrated through the creation of a traditional Vishu Kani setup using fruits, rice, flowers, a mirror, and a lamp. Participants were invited to observe the arrangement as a symbolic first sight representing prosperity and positivity, while the cultural significance of each element was explained to promote cultural understanding of Kerala traditions.</p><h3>Puthandu</h3><p>Puthandu celebrations featured an interactive taste-based experience where participants explored sweet, sour, bitter, and spicy flavors symbolizing different phases of life. The activity highlighted the philosophical message of accepting both joyful and challenging experiences with balance and positivity, reflecting the cultural traditions of Tamil Nadu.</p>"}};
+
+      readMoreBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const eventId = btn.getAttribute('data-id');
+          const data = eventsData[eventId];
+          
+          if(data) {
+            modalTitle.textContent = data.title;
+            modalMeta.innerHTML = `
+              <span><i class="fa-regular fa-calendar"></i> ${data.date}</span>
+              <span class="event-category-tag">${data.categoryLabel}</span>
+            `;
+            modalBody.innerHTML = data.content;
+            
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+          }
+        });
+      });
+
+      closeModalBtn.addEventListener('click', () => {
+        modalOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+
+      modalOverlay.addEventListener('click', (e) => {
+        if(e.target === modalOverlay) {
+          modalOverlay.classList.remove('active');
+          document.body.style.overflow = 'auto';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
