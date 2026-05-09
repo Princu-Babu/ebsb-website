@@ -8,50 +8,21 @@
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    .team-member {
-      background: var(--white);
+    .team-poster {
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      text-align: center;
-      transition: transform 0.3s;
-      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-md);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: var(--white);
     }
-    .team-member:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
+    .team-poster:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
     }
-    .member-img {
+    .team-poster img {
       width: 100%;
-      height: 250px;
-      background-color: var(--light-gray);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #cbd5e1;
-    }
-    .member-info {
-      padding: 20px;
-    }
-    .member-name {
-      font-size: 1.2rem;
-      color: var(--navy-blue);
-      margin-bottom: 5px;
-    }
-    .member-role {
-      color: var(--saffron);
-      font-weight: 500;
-      font-size: 0.9rem;
-      margin-bottom: 15px;
-    }
-    .member-socials a {
-      color: #94a3b8;
-      margin: 0 8px;
-      font-size: 1.2rem;
-      transition: color 0.3s;
-    }
-    .member-socials a:hover {
-      color: var(--navy-blue);
+      height: auto;
+      display: block;
     }
   </style>
 </head>
@@ -89,75 +60,63 @@
     </div>
   </header>
 
-  <!-- Faculty Coordinator -->
-  <section class="bg-white">
+  <!-- Team Gallery -->
+  <section class="bg-white" style="padding-top: 40px; padding-bottom: 80px;">
     <div class="container">
-      <h2 class="section-title text-center slide-up">Faculty Coordinator</h2>
-      <div class="grid" style="max-width: 400px; margin: 0 auto;">
-        <div class="team-member slide-up delay-100">
-          <div class="member-img"><i class="fa-solid fa-user-tie fa-5x"></i></div>
-          <div class="member-info">
-            <h3 class="member-name">Dr. Jane Doe</h3>
-            <div class="member-role">Faculty In-Charge, EBSB</div>
-            <div class="member-socials">
-              <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-              <a href="#"><i class="fa-solid fa-envelope"></i></a>
-            </div>
-          </div>
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px;">
+        
+        <div class="team-poster slide-up delay-100">
+          <img src="team/Coordinator.PNG" alt="Coordinator">
         </div>
-      </div>
-    </div>
-  </section>
+        
+        <div class="team-poster slide-up delay-100">
+          <img src="team/CORE TEAM HEAD.PNG" alt="Core Team Head">
+        </div>
 
-  <!-- Core Team -->
-  <section>
-    <div class="container">
-      <h2 class="section-title text-center slide-up">Core Team</h2>
-      <div class="grid grid-4">
-        <div class="team-member slide-up delay-100">
-          <div class="member-img"><i class="fa-solid fa-user fa-4x"></i></div>
-          <div class="member-info">
-            <h3 class="member-name">John Smith</h3>
-            <div class="member-role">Student Coordinator</div>
-            <div class="member-socials">
-              <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-              <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-          </div>
+        <div class="team-poster slide-up delay-100">
+          <img src="team/CORE TEAM HEAD (2).PNG" alt="Core Team Head (2)">
         </div>
-        <div class="team-member slide-up delay-200">
-          <div class="member-img"><i class="fa-solid fa-user fa-4x"></i></div>
-          <div class="member-info">
-            <h3 class="member-name">Alice Johnson</h3>
-            <div class="member-role">Co-Coordinator</div>
-            <div class="member-socials">
-              <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-              <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-          </div>
+
+        <div class="team-poster slide-up delay-200">
+          <img src="team/CORE TEAM MEMBER.PNG" alt="Core Team Member">
         </div>
-        <div class="team-member slide-up delay-300">
-          <div class="member-img"><i class="fa-solid fa-user fa-4x"></i></div>
-          <div class="member-info">
-            <h3 class="member-name">Ravi Kumar</h3>
-            <div class="member-role">Event Head</div>
-            <div class="member-socials">
-              <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-              <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-          </div>
+
+        <div class="team-poster slide-up delay-200">
+          <img src="team/CLUB COLLABORATION HEAD.PNG" alt="Club Collaboration Head">
         </div>
-        <div class="team-member slide-up delay-400">
-          <div class="member-img"><i class="fa-solid fa-user fa-4x"></i></div>
-          <div class="member-info">
-            <h3 class="member-name">Priya Patel</h3>
-            <div class="member-role">Media Team Head</div>
-            <div class="member-socials">
-              <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-              <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-          </div>
+
+        <div class="team-poster slide-up delay-200">
+          <img src="team/DESIGN HEAD.PNG" alt="Design Head">
         </div>
+
+        <div class="team-poster slide-up delay-300">
+          <img src="team/Design and web-d head.PNG" alt="Design and Web-D Head">
+        </div>
+
+        <div class="team-poster slide-up delay-300">
+          <img src="team/EVENT MANAGEMENT HEAD.PNG" alt="Event Management Head">
+        </div>
+
+        <div class="team-poster slide-up delay-300">
+          <img src="team/EVENT MANAGEMENT HEAD (2).PNG" alt="Event Management Head (2)">
+        </div>
+
+        <div class="team-poster slide-up delay-400">
+          <img src="team/Inventory head.PNG" alt="Inventory Head">
+        </div>
+
+        <div class="team-poster slide-up delay-400">
+          <img src="team/Media coverage head.PNG" alt="Media Coverage Head">
+        </div>
+
+        <div class="team-poster slide-up delay-400">
+          <img src="team/OUTREACH HEAD.PNG" alt="Outreach Head">
+        </div>
+
+        <div class="team-poster slide-up delay-400">
+          <img src="team/social media head.PNG" alt="Social Media Head">
+        </div>
+
       </div>
     </div>
   </section>
