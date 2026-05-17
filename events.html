@@ -85,7 +85,7 @@
       color: var(--white);
       border-color: var(--saffron);
     }
-    .event-item.hidden {
+    .event-item.hidden, .event-card.hidden {
       display: none !important;
     }
 
@@ -145,7 +145,7 @@
       justify-content: center;
       font-size: 1.2rem;
       cursor: pointer;
-      color: var(--navy);
+      color: var(--navy-blue);
       transition: all 0.3s;
     }
     .close-modal:hover {
@@ -153,7 +153,7 @@
       color: var(--white);
     }
     .modal-header h2 {
-      color: var(--navy);
+      color: var(--navy-blue);
       margin-bottom: 15px;
       font-size: 2rem;
     }
@@ -248,240 +248,352 @@
       </div>
 
       <div class='event-category slide-up delay-100'>
-        <div class='grid' id="events-grid" style='grid-template-columns: 1fr;'>
-          
-          <div class="event-card">
-            <div class="event-img"><i class="fa-solid fa-image fa-3x"></i></div>
-            <div class="event-details">
-              <div class="event-meta">
-                <span><i class="fa-regular fa-calendar"></i> Aug 07, 2025</span>
-                <span><i class="fa-solid fa-location-dot"></i> IIT Jammu</span>
-              </div>
-              <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Rakshabandhan</h3>
-              <p style="margin-bottom: 20px;">Rakhi Making Workshop in collaboration with Kritash for Rakshabandhan.</p>
-            </div>
-          </div>
+        <div class='grid' id='events-grid' style='grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px;'>
 
-          <div class="event-card">
-            <div class="event-img"><i class="fa-solid fa-image fa-3x"></i></div>
-            <div class="event-details">
-              <div class="event-meta">
-                <span><i class="fa-regular fa-calendar"></i> Aug 16, 2025</span>
-                <span><i class="fa-solid fa-location-dot"></i> Campus</span>
+          <div class="event-card slide-up" data-category="cultural">
+            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Rakhi making/IMG_4572.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-details" style="padding: 25px;">
+              <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
+                <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Aug 07, 2025</span>
+                <span><i class="fa-solid fa-location-dot" style="color: var(--green);"></i> IIT Jammu</span>
               </div>
-              <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Janmashtami</h3>
-              <p style="margin-bottom: 20px;">Celebrating with Dahi Handi and vibrant cultural performances.</p>
+              <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--navy-blue);">Rakshabandhan</h3>
+              <p style="margin-bottom: 20px; color: #475569; line-height: 1.6;">Rakhi Making Workshop in collaboration with Kritash for Rakshabandhan.</p>
+              <button class="btn btn-outline read-more-btn" 
+                data-title="Rakshabandhan" 
+                data-date="Aug 07, 2025" 
+                data-location="IIT Jammu" 
+                data-img="img/Events Gallery/Rakhi making/IMG_4572.PNG" 
+                data-content='<p>As part of the Har Ghar Tiranga initiative, the EBSB Club IIT Jammu organized a Rakhi Making Workshop to promote patriotism, unity, and gratitude towards the armed forces. Students enthusiastically participated in crafting handmade rakhis symbolizing respect, appreciation, and emotional connection with the soldiers safeguarding the nation at the borders.</p><p>The workshop was conducted in collaboration with Kritash Club, through which the handmade rakhis were planned to be taken to border areas and tied to soldiers as a gesture of solidarity and national pride.</p>'>Read More</button>
             </div>
           </div>
-
-          <div class="event-card">
-            <div class="event-img"><i class="fa-solid fa-image fa-3x"></i></div>
-            <div class="event-details">
-              <div class="event-meta">
-                <span><i class="fa-regular fa-calendar"></i> Sep 05, 2025</span>
-                <span><i class="fa-solid fa-location-dot"></i> Campus Grounds</span>
+    
+          <div class="event-card slide-up" data-category="cultural">
+            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Janmashtami/IMG_1454.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-details" style="padding: 25px;">
+              <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
+                <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Aug 16, 2025</span>
+                <span><i class="fa-solid fa-location-dot" style="color: var(--green);"></i> Campus</span>
               </div>
-              <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Onam 2025 - Unity in Bloom</h3>
-              <p style="margin-bottom: 20px;">Pookkalam creation and an Onam Celebration Meeting and Presentation.</p>
+              <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--navy-blue);">Janmashtami</h3>
+              <p style="margin-bottom: 20px; color: #475569; line-height: 1.6;">Celebrating with Dahi Handi and vibrant cultural performances.</p>
+              <button class="btn btn-outline read-more-btn" 
+                data-title="Janmashtami" 
+                data-date="Aug 16, 2025" 
+                data-location="Campus" 
+                data-img="img/Events Gallery/Janmashtami/IMG_1454.PNG" 
+                data-content='<h3>Dahi Handi</h3><p>The traditional Dahi Handi celebration was organized as part of Krishna Janmashtami to promote teamwork, unity, and cultural exchange among the IIT Jammu community. A decorated earthen pot filled with curd, butter, and sweets was suspended at a designated height, and student teams participated in a pyramid-making challenge to break the handi, reflecting the spirit of collective effort and celebration associated with the festival.</p><h3>Cultural Performances</h3><p>Cultural performances were organized to celebrate Krishna as a figure deeply reflected in the literature, music, and traditions of various regions across India. The event included bhajans, kirtans, storytelling, poetry, and other cultural interactions that highlighted the diverse yet interconnected portrayals of Krishna in different Indian languages and traditions, promoting the spirit of unity in diversity and shared cultural heritage.</p>'>Read More</button>
             </div>
           </div>
-
-          <div class="event-card">
-            <div class="event-img"><i class="fa-solid fa-image fa-3x"></i></div>
-            <div class="event-details">
-              <div class="event-meta">
-                <span><i class="fa-regular fa-calendar"></i> Sep 30, 2025</span>
-                <span><i class="fa-solid fa-location-dot"></i> Seminar Hall</span>
+    
+          <div class="event-card slide-up" data-category="cultural">
+            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/onam website gallery/IMG_5397.JPG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-details" style="padding: 25px;">
+              <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
+                <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Sep 05, 2025</span>
+                <span><i class="fa-solid fa-location-dot" style="color: var(--green);"></i> Campus Grounds</span>
               </div>
-              <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Durgashtami</h3>
-              <p style="margin-bottom: 20px;">Cultural performances with a strong focus on women empowerment themes.</p>
+              <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--navy-blue);">Onam 2025 - Unity in Bloom</h3>
+              <p style="margin-bottom: 20px; color: #475569; line-height: 1.6;">Pookkalam creation and an Onam Celebration Meeting and Presentation.</p>
+              <button class="btn btn-outline read-more-btn" 
+                data-title="Onam 2025 - Unity in Bloom" 
+                data-date="Sep 05, 2025" 
+                data-location="Campus Grounds" 
+                data-img="img/Events Gallery/onam website gallery/IMG_5397.JPG" 
+                data-content='<h3>Pookkalam</h3><p>A collaborative Pookkalam (floral carpet) activity was organized as part of the Onam celebrations, with participation from students, staff, and faculty members. The activity promoted teamwork, creativity, and cultural appreciation while showcasing the traditional floral art associated with Onam.</p><h3>Onam Sadhya</h3><p>An Onam Sadhya, the traditional vegetarian festive feast of Kerala, was organized to introduce participants to the culinary traditions of the festival. The celebration concluded with the serving of Payasam, a special Onam dessert symbolizing joy and togetherness.</p><h3>Cultural Discussion & Exchange</h3><p>A multilingual cultural discussion session was conducted as part of the Onam celebrations, where participants shared the significance, traditions, and values of Onam in more than nine Indian languages.</p>'>Read More</button>
             </div>
           </div>
-
-          <div class="event-card">
-            <div class="event-img"><i class="fa-solid fa-image fa-3x"></i></div>
-            <div class="event-details">
-              <div class="event-meta">
-                <span><i class="fa-regular fa-calendar"></i> Oct 17-20, 2025</span>
-                <span><i class="fa-solid fa-location-dot"></i> Football Ground</span>
+    
+          <div class="event-card slide-up" data-category="cultural">
+            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/durgashtami website gallery/IMG_6374.JPG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-details" style="padding: 25px;">
+              <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
+                <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Sep 30, 2025</span>
+                <span><i class="fa-solid fa-location-dot" style="color: var(--green);"></i> Seminar Hall</span>
               </div>
-              <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Diwali - Radiance of Unity</h3>
-              <p style="margin-bottom: 20px;">Diya making workshop, engineering-themed rangoli, and a massive 14,000+ diya sketch.</p>
+              <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--navy-blue);">Durgashtami</h3>
+              <p style="margin-bottom: 20px; color: #475569; line-height: 1.6;">Cultural performances with a strong focus on women empowerment themes.</p>
+              <button class="btn btn-outline read-more-btn" 
+                data-title="Durgashtami" 
+                data-date="Sep 30, 2025" 
+                data-location="Seminar Hall" 
+                data-img="img/Events Gallery/durgashtami website gallery/IMG_6374.JPG" 
+                data-content='<h3>Cultural Performances</h3><p>Durgashtami celebrations were organized to highlight Durga as a symbol of strength, resilience, courage, and the triumph of good over evil. The event showcased how Goddess Durga is celebrated across different regions of India through diverse yet interconnected traditions, including the Durga Puja of West Bengal and the Navaratri celebrations of western and southern India.</p><p>Cultural performances including dance, music, and traditional presentations were conducted to reflect the rich artistic and devotional traditions associated with Durgashtami and Navaratri. The celebration promoted cultural appreciation, active participation, and the spirit of unity in diversity within the IIT Jammu community while emphasizing the universal message of Shakti, harmony, and collective strength.</p>'>Read More</button>
             </div>
           </div>
-
-          <div class="event-card">
-            <div class="event-img"><i class="fa-solid fa-image fa-3x"></i></div>
-            <div class="event-details">
-              <div class="event-meta">
-                <span><i class="fa-regular fa-calendar"></i> Oct 31, 2025</span>
-                <span><i class="fa-solid fa-location-dot"></i> Mess Area</span>
+    
+          <div class="event-card slide-up" data-category="social">
+            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Dussehra (burn the evil)/IMG_1596.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-details" style="padding: 25px;">
+              <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
+                <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Oct 02, 2025</span>
+                <span><i class="fa-solid fa-location-dot" style="color: var(--green);"></i> Egret Hostel</span>
               </div>
-              <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Tribal Cuisine Unity Carnival</h3>
-              <p style="margin-bottom: 20px;">In collaboration with Food Tinkers. Featuring Eromba, Dhuska, Suan Kheer, and more.</p>
+              <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--navy-blue);">Wall of Evil – Burn the Negativity</h3>
+              <p style="margin-bottom: 20px; color: #475569; line-height: 1.6;">Creation of a Wall of Evil poster and a symbolic burning activity during Dussehra.</p>
+              <button class="btn btn-outline read-more-btn" 
+                data-title="Wall of Evil – Burn the Negativity" 
+                data-date="Oct 02, 2025" 
+                data-location="Egret Hostel" 
+                data-img="img/Events Gallery/Dussehra (burn the evil)/IMG_1596.PNG" 
+                data-content='<h3>Wall of Evil</h3><p>The \u201cWall of Evil\u201d activity was organized during Dussehra to symbolize the victory of good over evil and to spread awareness about modern-day social negativities. Inspired by the ten-headed Ravana, the installation represented various societal evils such as anger, greed, jealousy, corruption, discrimination, fear, hatred, and pollution.</p><p>A large interactive \u201cWall of Evil\u201d poster was created near Egret Hostel, where participants wrote additional social evils and negative thoughts on slips and pasted them onto the wall. The activity encouraged collective reflection on overcoming negativity through unity and social responsibility.</p><p>The event concluded with a symbolic burning ritual representing the destruction of evil and the triumph of righteousness, inspired by the diverse Dussehra traditions celebrated across India. A reflection and pledge session was also conducted, where students collectively pledged to spread positivity, harmony, and goodness within society.</p>'>Read More</button>
             </div>
           </div>
-
-          <div class="event-card">
-            <div class="event-img"><i class="fa-solid fa-image fa-3x"></i></div>
-            <div class="event-details">
-              <div class="event-meta">
-                <span><i class="fa-regular fa-calendar"></i> Nov 05, 2025</span>
-                <span><i class="fa-solid fa-location-dot"></i> Student Hub</span>
+    
+          <div class="event-card slide-up" data-category="national">
+            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Gandhi Shastri Jayanthi/IMG_4593.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-details" style="padding: 25px;">
+              <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
+                <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Oct 02, 2025</span>
+                <span><i class="fa-solid fa-location-dot" style="color: var(--green);"></i> Law School Jammu</span>
               </div>
-              <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Reflections on Guru Nanak Dev Ji</h3>
-              <p style="margin-bottom: 20px;">Reflection sharing, Sikh history narration, poem presentations, and cultural connection segment.</p>
+              <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--navy-blue);">Gandhi–Shastri Jayanthi</h3>
+              <p style="margin-bottom: 20px; color: #475569; line-height: 1.6;">Group discussion on the Official Language Act, 1963 in collaboration with Law School Jammu.</p>
+              <button class="btn btn-outline read-more-btn" 
+                data-title="Gandhi–Shastri Jayanthi" 
+                data-date="Oct 02, 2025" 
+                data-location="Law School Jammu" 
+                data-img="img/Events Gallery/Gandhi Shastri Jayanthi/IMG_4593.PNG" 
+                data-content='<p>On the occasion of the birth anniversaries of Mahatma Gandhi and Lal Bahadur Shastri, a group discussion session was organized in collaboration with students from Law School Jammu focusing on the impact of the Official Language Act, 1963 in promoting unity in diversity in India. Participants explored the historical context and significance of the Official Language Amendment Bill introduced by Lal Bahadur Shastri and discussed its influence on education, governance, culture, and linguistic harmony in modern India.</p><p>As part of the session, students referred to selected parliamentary proceedings and engaged in discussions on the advantages, challenges, and future implications of India\u2019s official language policies in a multilingual society. The event encouraged constitutional awareness, critical thinking, and public speaking while aligning with the nationwide celebration of \u201cHamara Samvidhan, Hamara Swabhimaan\u201d commemorating 75 years of the Constitution of India.</p>'>Read More</button>
             </div>
           </div>
-
-          <div class="event-card">
-            <div class="event-img"><i class="fa-solid fa-image fa-3x"></i></div>
-            <div class="event-details">
-              <div class="event-meta">
-                <span><i class="fa-regular fa-calendar"></i> Jan 13-15, 2026</span>
-                <span><i class="fa-solid fa-location-dot"></i> Campus</span>
+    
+          <div class="event-card slide-up" data-category="cultural">
+            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Diwali/IMG_1689.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-details" style="padding: 25px;">
+              <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
+                <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Oct 17-20, 2025</span>
+                <span><i class="fa-solid fa-location-dot" style="color: var(--green);"></i> Football Ground</span>
               </div>
-              <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Sankranti 2026 - India's Harvest Festival</h3>
-              <p style="margin-bottom: 20px;">Celebrations including Bhogi, Lohri, Kite Festival, and Pongal making.</p>
+              <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--navy-blue);">Diwali - Radiance of Unity</h3>
+              <p style="margin-bottom: 20px; color: #475569; line-height: 1.6;">Diya making workshop, engineering-themed rangoli, and a massive 14,000+ diya sketch.</p>
+              <button class="btn btn-outline read-more-btn" 
+                data-title="Diwali - Radiance of Unity" 
+                data-date="Oct 17-20, 2025" 
+                data-location="Football Ground" 
+                data-img="img/Events Gallery/Diwali/IMG_1689.PNG" 
+                data-content='<h3>Diwali \u2013 Festival of Lights and Unity</h3><p>Diwali celebrations were organized to highlight the festival as a symbol of the triumph of good over evil, knowledge over ignorance, and hope over despair. The celebration reflected the spirit of Ek Bharat Shreshtha Bharat by showcasing how Diwali is celebrated in diverse forms across India while promoting unity, harmony, and cultural pride within the IIT Jammu community.</p><h3>IIT Jammu & EBSB Diya Sketch</h3><p>A large illuminated sketch representing IIT Jammu and EBSB was created on the football ground using more than 14,000 diyas. Volunteers carefully arranged the diyas to form artistic representations of the institute\u2019s identity, symbolizing enlightenment, innovation, unity, and collective progress.</p><h3>Campus Diya Illumination</h3><p>Diyas prepared during the workshop were displayed and illuminated across selected areas of the IIT Jammu campus, including pathways, common spaces, and institute premises. The collective lighting ceremony created a vibrant festive atmosphere symbolizing positivity, peace, and unity across the campus community.</p>'>Read More</button>
             </div>
           </div>
-
-          <div class="event-card">
-            <div class="event-img"><i class="fa-solid fa-image fa-3x"></i></div>
-            <div class="event-details">
-              <div class="event-meta">
-                <span><i class="fa-regular fa-calendar"></i> Feb 15, 2026</span>
-                <span><i class="fa-solid fa-location-dot"></i> Exhibition Hall</span>
+    
+          <div class="event-card slide-up" data-category="technical">
+            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Diya crafting & designing workshop/IMG_1671.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-details" style="padding: 25px;">
+              <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
+                <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Oct 18, 2025</span>
+                <span><i class="fa-solid fa-location-dot" style="color: var(--green);"></i> Workshops</span>
               </div>
-              <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Draw the Immortal</h3>
-              <p style="margin-bottom: 20px;">An art exhibition showcasing visible forms of Lord Shiva in Indian art traditions.</p>
+              <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--navy-blue);">Engineering-Themed Diya Workshop</h3>
+              <p style="margin-bottom: 20px; color: #475569; line-height: 1.6;">Crafting and decorating diyas inspired by engineering and scientific concepts.</p>
+              <button class="btn btn-outline read-more-btn" 
+                data-title="Engineering-Themed Diya Workshop" 
+                data-date="Oct 18, 2025" 
+                data-location="Workshops" 
+                data-img="img/Events Gallery/Diya crafting & designing workshop/IMG_1671.PNG" 
+                data-content='<h3>Diya Making, Painting & Decorating Workshop</h3><p>A Diya Rangoli Workshop was organized where students designed, painted, and decorated diyas inspired by Indian cultural traditions as well as engineering and scientific concepts. Participants created artistic designs based on regional folk art, tribal motifs, engineering diagrams, coding patterns, atomic structures, phase diagrams, and other technical themes, blending creativity with innovation.</p>'>Read More</button>
             </div>
           </div>
-
-          <div class="event-card">
-            <div class="event-img"><i class="fa-solid fa-image fa-3x"></i></div>
-            <div class="event-details">
-              <div class="event-meta">
-                <span><i class="fa-regular fa-calendar"></i> Feb 21, 2026</span>
-                <span><i class="fa-solid fa-location-dot"></i> Seminar Hall</span>
+    
+          <div class="event-card slide-up" data-category="technical">
+            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Rangoli making competition/IMG_1679.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-details" style="padding: 25px;">
+              <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
+                <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Oct 19, 2025</span>
+                <span><i class="fa-solid fa-location-dot" style="color: var(--green);"></i> Campus Corridors</span>
               </div>
-              <h3 style="font-size: 1.5rem; margin-bottom: 10px;">International Mother Tongue Day</h3>
-              <p style="margin-bottom: 20px;">"Listen Your Roots" - Mother Tongue Singing performances from diverse regions.</p>
+              <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--navy-blue);">Engineering-Themed Rangoli Competition</h3>
+              <p style="margin-bottom: 20px; color: #475569; line-height: 1.6;">Designing rangolis inspired by circuit diagrams, coding structures, and chemical formulas.</p>
+              <button class="btn btn-outline read-more-btn" 
+                data-title="Engineering-Themed Rangoli Competition" 
+                data-date="Oct 19, 2025" 
+                data-location="Campus Corridors" 
+                data-img="img/Events Gallery/Rangoli making competition/IMG_1679.PNG" 
+                data-content='<h3>Engineering-Themed Rangoli Competition</h3><p>An engineering-themed Rangoli Competition was conducted to encourage students to combine creativity with technical imagination. Participants designed rangolis inspired by concepts such as circuit diagrams, mechanical systems, coding structures, chemical formulas, engineering flowcharts, and scientific patterns, showcasing innovation while celebrating the festive spirit of Diwali.</p>'>Read More</button>
             </div>
           </div>
-
-          <div class="event-card">
-            <div class="event-img"><i class="fa-solid fa-image fa-3x"></i></div>
-            <div class="event-details">
-              <div class="event-meta">
-                <span><i class="fa-regular fa-calendar"></i> Mar 03-04, 2026</span>
-                <span><i class="fa-solid fa-location-dot"></i> Campus Grounds</span>
+    
+          <div class="event-card slide-up" data-category="cultural-exchange">
+            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Tribal cuisine unity carnival/IMG_1473.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-details" style="padding: 25px;">
+              <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
+                <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Oct 31, 2025</span>
+                <span><i class="fa-solid fa-location-dot" style="color: var(--green);"></i> Mess Area</span>
               </div>
-              <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Holi - Unity in Every Hue</h3>
-              <p style="margin-bottom: 20px;">Celebrating cultural harmony with Holika Dahan and Rangwali Holi rituals.</p>
+              <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--navy-blue);">Tribal Cuisine Unity Carnival</h3>
+              <p style="margin-bottom: 20px; color: #475569; line-height: 1.6;">In collaboration with Food Tinkers featuring dishes like Eromba, Dhuska, and Suan Kheer.</p>
+              <button class="btn btn-outline read-more-btn" 
+                data-title="Tribal Cuisine Unity Carnival" 
+                data-date="Oct 31, 2025" 
+                data-location="Mess Area" 
+                data-img="img/Events Gallery/Tribal cuisine unity carnival/IMG_1473.PNG" 
+                data-content='<h3>Tribal Cuisine Unity Carnival</h3><p>The Tribal Cuisine Unity Carnival was organized on the occasion of National Unity Day as part of Janjatiya Gaurav Varsh 2025, commemorating the 150th birth anniversary of Birsa Munda. Organized by the EBSB Club in collaboration with Food Tinkers Club IIT Jammu, the event celebrated the rich tribal heritage, culinary traditions, and cultural diversity of India through food, storytelling, and cultural exchange.</p><h3>Featured Dishes</h3><p><strong>Suan Kheer:</strong> A traditional tribal dessert prepared using indigenous grains and milk, known for its nutritional richness and cultural significance.</p><p><strong>Nachani Bhakar with Pithala:</strong> Nachani Bhakar is a nutritious millet roti served with Pithala, a protein-rich gram flour preparation.</p><p><strong>Eromba:</strong> A traditional spicy mashed vegetable preparation from the tribal communities of Northeast India.</p><p><strong>Dhuska:</strong> A traditional rice-and-lentil-based tribal delicacy commonly prepared in eastern tribal regions of India.</p>'>Read More</button>
             </div>
           </div>
-          
-          <div class="event-card">
-            <div class="event-img"><i class="fa-solid fa-image fa-3x"></i></div>
-            <div class="event-details">
-              <div class="event-meta">
-                <span><i class="fa-regular fa-calendar"></i> Mar 19, 2026</span>
-                <span><i class="fa-solid fa-location-dot"></i> Student Hub</span>
+    
+          <div class="event-card slide-up" data-category="social">
+            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Guru nanak jayanti/IMG_1493.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-details" style="padding: 25px;">
+              <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
+                <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Nov 05, 2025</span>
+                <span><i class="fa-solid fa-location-dot" style="color: var(--green);"></i> Auditorium</span>
               </div>
-              <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Ugadi 2026 - Lunar Almanac</h3>
-              <p style="margin-bottom: 20px;">Spring New Year celebrations honoring Ugadi, Gudi Padwa and diverse traditions across India.</p>
+              <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--navy-blue);">Reflections on Guru Nanak Dev Ji</h3>
+              <p style="margin-bottom: 20px; color: #475569; line-height: 1.6;">Reflection sharing, Sikh history narration, and cultural connection segment.</p>
+              <button class="btn btn-outline read-more-btn" 
+                data-title="Reflections on Guru Nanak Dev Ji" 
+                data-date="Nov 05, 2025" 
+                data-location="Auditorium" 
+                data-img="img/Events Gallery/Guru nanak jayanti/IMG_1493.PNG" 
+                data-content='<h3>Reflections on the Teachings of Guru Nanak Dev Ji</h3><p>Guru Nanak Gurpurab was celebrated to honor the teachings and values of Guru Nanak, emphasizing equality, truth, service, compassion, and devotion. The event highlighted how Guru Nanak Dev Ji\u2019s principles continue to inspire harmony and unity across communities and cultures.</p><h3>Reflection Sharing</h3><p>Students and staff participated in a reflection-sharing session discussing the core teachings of Guru Nanak Dev Ji, including Vaand Chhako (sharing with others), Kirat Karo (earning honestly), and Naam Japo (remembering the divine). Participants shared their thoughts in different Indian languages, promoting linguistic diversity and cultural inclusivity in alignment with the spirit of Ek Bharat Shreshtha Bharat.</p><h3>Kada Prasad Distribution</h3><p>Kada Prasad, the traditional sacred offering prepared using wheat flour, ghee, and sugar, was distributed among participants as a symbol of equality, sharing, and selfless service. The activity introduced participants to an important aspect of Sikh tradition while reinforcing the EBSB values of unity, respect, and togetherness.</p>'>Read More</button>
             </div>
           </div>
-
-      <!-- Educational & National Events -->
-      <div class="event-category slide-up delay-200">
-        <h2 style="color: var(--success); margin-bottom: 20px;"><i class="fa-solid fa-book-open"></i> Educational & National Events</h2>
-        <div class="grid" style="grid-template-columns: 1fr; gap: 30px;">
-          
-          <div class="event-card">
-            <div class="event-img"><i class="fa-solid fa-image fa-3x"></i></div>
-            <div class="event-details">
-              <div class="event-meta">
-                <span><i class="fa-regular fa-calendar"></i> Oct 02, 2025</span>
-                <span><i class="fa-solid fa-location-dot"></i> Lecture Theatre</span>
+    
+          <div class="event-card slide-up" data-category="national">
+            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/National youth day/IMG_1516.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-details" style="padding: 25px;">
+              <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
+                <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Jan 12, 2026</span>
+                <span><i class="fa-solid fa-location-dot" style="color: var(--green);"></i> Seminar Hall</span>
               </div>
-              <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Gandhi & Shastri Jayanthi</h3>
-              <p style="margin-bottom: 20px;">Group discussion organized on the role of the Official Language Act, 1963 in promoting unity.</p>
+              <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--navy-blue);">National Youth Day 2026</h3>
+              <p style="margin-bottom: 20px; color: #475569; line-height: 1.6;">Screening of Chaar Sahibzade followed by a peer learning circle.</p>
+              <button class="btn btn-outline read-more-btn" 
+                data-title="National Youth Day 2026" 
+                data-date="Jan 12, 2026" 
+                data-location="Seminar Hall" 
+                data-img="img/Events Gallery/National youth day/IMG_1516.PNG" 
+                data-content='<h3>National Youth Day & Veer Baal Diwas</h3><p>Veer Baal Diwas and National Youth Day were observed through a special educational and cultural event organized by the EBSB Club to honor the courage, sacrifice, moral strength, and youth ideals represented by the Sahibzadas of Guru Gobind Singh and the teachings of Swami Vivekananda. The event aimed to inspire students with values of bravery, resilience, leadership, integrity, and national unity while promoting cultural harmony and ethical awareness.</p><h3>Chaar Sahibzade Screening</h3><p>An animated screening of Chaar Sahibzade was organized to acquaint students with the heroic sacrifices and unwavering courage of the Sahibzadas of Guru Gobind Singh Ji. The screening served as an educational and inspirational medium, helping students emotionally and intellectually connect with India\u2019s historical and cultural legacy.</p><h3>Peer Learning Circle & Group Discussion</h3><p>Following the screening, a peer learning circle and group discussion session was conducted on the theme \u201cCourage and Sacrifice: Lessons from the Sahibzadas and Swami Vivekananda for Today\u2019s Generation.\u201d Students reflected on the relevance of these timeless values in contemporary society and discussed themes such as leadership, ethical decision-making, social responsibility, self-discipline, and nation-building.</p>'>Read More</button>
             </div>
           </div>
-
-          <div class="event-card">
-            <div class="event-img"><i class="fa-solid fa-image fa-3x"></i></div>
-            <div class="event-details">
-              <div class="event-meta">
-                <span><i class="fa-regular fa-calendar"></i> Oct 02, 2025</span>
-                <span><i class="fa-solid fa-location-dot"></i> Campus Spaces</span>
+    
+          <div class="event-card slide-up" data-category="cultural">
+            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Pongal/IMG_1654.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-details" style="padding: 25px;">
+              <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
+                <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Jan 13-15, 2026</span>
+                <span><i class="fa-solid fa-location-dot" style="color: var(--green);"></i> Campus Grounds</span>
               </div>
-              <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Wall of Evil</h3>
-              <p style="margin-bottom: 20px;">Creation of a "Wall of Evil" poster, symbolic burning activity, and positivity pledge session.</p>
+              <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--navy-blue);">Sankranti 2026 - India's Harvest Festival</h3>
+              <p style="margin-bottom: 20px; color: #475569; line-height: 1.6;">Bhogi, Lohri, Kite Festival, and Pongal making activities.</p>
+              <button class="btn btn-outline read-more-btn" 
+                data-title="Sankranti 2026 - India's Harvest Festival" 
+                data-date="Jan 13-15, 2026" 
+                data-location="Campus Grounds" 
+                data-img="img/Events Gallery/Pongal/IMG_1654.PNG" 
+                data-content='<h3>Makara Sankranti Celebrations</h3><p>Makara Sankranti celebrations were organized as a pan-Indian harvest festival event under the Ek Bharat Shreshtha Bharat initiative, highlighting the shared agricultural traditions that unite diverse cultures across India. The celebration showcased how harvest festivals are observed in different regions under various names such as Pongal, Lohri, Uttarayan, Magh Bihu, Suggi, Poush Sankranti, Maghi, Tusu Parab, and Pedda Panduga, reflecting gratitude toward nature, farmers, and the Sun God.</p><h3>Kite Festival \u2013 Uttarayan Celebration</h3><p>A Kite Festival was organized to represent the spirit of Uttarayan and Makara Sankranti celebrations observed across western and central India. Students participated in kite flying activities symbolizing joy, hope, positivity, and new beginnings associated with the harvest season.</p><h3>Lohri Celebration & Cultural Jamming Session</h3><p>A Lohri celebration featuring a symbolic bonfire and cultural jamming session was conducted to represent the harvest traditions of northern and northeastern India. The event included music, cultural interactions, and community participation inspired by festivals such as Lohri, Magh Bihu, and Gaan-Ngai.</p><h3>Pongal Competition</h3><p>A Pongal-making competition was organized to celebrate the culinary traditions associated with harvest festivals across India. Participants prepared traditional Pongal dishes while discussing similar food traditions connected with Makara Sankranti and regional harvest festivals.</p>'>Read More</button>
             </div>
           </div>
-
-          <div class="event-card">
-            <div class="event-img"><i class="fa-solid fa-image fa-3x"></i></div>
-            <div class="event-details">
-              <div class="event-meta">
-                <span><i class="fa-regular fa-calendar"></i> Jan 12, 2026</span>
-                <span><i class="fa-solid fa-location-dot"></i> Seminar Hall</span>
+    
+          <div class="event-card slide-up" data-category="national">
+            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Vasant panchami/IMG_1631.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-details" style="padding: 25px;">
+              <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
+                <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Jan 23, 2026</span>
+                <span><i class="fa-solid fa-location-dot" style="color: var(--green);"></i> Main Auditorium</span>
               </div>
-              <h3 style="font-size: 1.5rem; margin-bottom: 10px;">National Youth Day</h3>
-              <p style="margin-bottom: 20px;">Screening of Chaar Sahibzade followed by peer learning, discussing courage and Swami Vivekananda's ideas.</p>
+              <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--navy-blue);">Vasantha Panchami & Parakram Diwas</h3>
+              <p style="margin-bottom: 20px; color: #475569; line-height: 1.6;">Cultural performances celebrating knowledge, creativity, and patriotism.</p>
+              <button class="btn btn-outline read-more-btn" 
+                data-title="Vasantha Panchami & Parakram Diwas" 
+                data-date="Jan 23, 2026" 
+                data-location="Main Auditorium" 
+                data-img="img/Events Gallery/Vasant panchami/IMG_1631.PNG" 
+                data-content='<h3>Vasantha Panchami and Parakram Diwas</h3><p>Vasant Panchami and Parakram Diwas were celebrated together under the Ek Bharat Shreshtha Bharat initiative to highlight the themes of knowledge, creativity, patriotism, and national integration. The event showcased how Vasantha Panchami is celebrated across India in diverse forms such as Basant Panchami, Saraswati Puja, Sri Panchami, and Sonth Posthe, reflecting India\u2019s rich cultural plurality and shared traditions.</p><p>The celebration also commemorated the birth anniversary of Subhas Chandra Bose, honoring his ideals of courage, leadership, resilience, and unity. By combining cultural celebration with patriotic remembrance, the event promoted the spirit of unity in diversity through knowledge, art, literature, and national consciousness.</p><h3>Cultural Performances & Artistic Presentations</h3><p>A cultural programme featuring storytelling, singing, poetry recitation, and dance performances was organized to showcase regional expressions associated with Vasantha Panchami. Students presented performances in multiple Indian languages and artistic traditions.</p>'>Read More</button>
             </div>
           </div>
-
-          <div class="event-card">
-            <div class="event-img"><i class="fa-solid fa-image fa-3x"></i></div>
-            <div class="event-details">
-              <div class="event-meta">
-                <span><i class="fa-regular fa-calendar"></i> Jan 23, 2026</span>
-                <span><i class="fa-solid fa-location-dot"></i> Auditorium</span>
+    
+          <div class="event-card slide-up" data-category="technical">
+            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/National voters day/IMG_1555.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-details" style="padding: 25px;">
+              <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
+                <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Jan 25, 2026</span>
+                <span><i class="fa-solid fa-location-dot" style="color: var(--green);"></i> Tech Labs</span>
               </div>
-              <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Vasant Panchami & Parakram Diwas</h3>
-              <p style="margin-bottom: 20px;">Cultural performances and tribute commemorating the spirit of courage and valor.</p>
+              <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--navy-blue);">National Voter's Day 2026</h3>
+              <p style="margin-bottom: 20px; color: #475569; line-height: 1.6;">Arduino-based EVM Making Challenge.</p>
+              <button class="btn btn-outline read-more-btn" 
+                data-title="National Voter's Day 2026" 
+                data-date="Jan 25, 2026" 
+                data-location="Tech Labs" 
+                data-img="img/Events Gallery/National voters day/IMG_1555.PNG" 
+                data-content='<h3>Arduino-Based EVM Making Challenge: Democracy in Action</h3><p>National Voters\u2019 Day was observed through an innovative hands-on event titled \u201cArduino-Based EVM Making Challenge: Democracy in Action,\u201d organized by the EBSB Club to promote democratic awareness, responsible citizenship, and technical learning among students.</p><p>The event focused on designing and programming functional Electronic Voting Machine (EVM) prototypes using Arduino UNO, enabling participants to understand the practical working of India\u2019s electoral system. Students implemented simplified versions of different Indian election methods, including General Elections using the First Past the Post system, Rajya Sabha Preferential Voting, Vice Presidential Elimination Voting, and the Presidential Election system based on the Single Transferable Vote method.</p><p>Technical components, hardware support, and innovation facilities for the challenge were provided with support from Indian Institute of Entrepreneurship Development Cell (I2EDC). By combining electronics, programming, and civic education, the event encouraged experiential learning while helping students understand how democratic institutions function through logical algorithms and hardware systems.</p>'>Read More</button>
             </div>
           </div>
-
-          <div class="event-card">
-            <div class="event-img"><i class="fa-solid fa-image fa-3x"></i></div>
-            <div class="event-details">
-              <div class="event-meta">
-                <span><i class="fa-regular fa-calendar"></i> Apr 14, 2026</span>
-                <span><i class="fa-solid fa-location-dot"></i> Seminar Hall</span>
+    
+          <div class="event-card slide-up" data-category="creative">
+            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Draw the immortal/IMG_1575.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-details" style="padding: 25px;">
+              <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
+                <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Feb 15, 2026</span>
+                <span><i class="fa-solid fa-location-dot" style="color: var(--green);"></i> Open Theatre</span>
               </div>
-              <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Dr. Ambedkar's 136th Birth Anniversary</h3>
-              <p style="margin-bottom: 20px;">Discussions on constitution awareness, alongside Puthandu and Vishu celebrations.</p>
+              <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--navy-blue);">Draw the Immortal</h3>
+              <p style="margin-bottom: 20px; color: #475569; line-height: 1.6;">Visible forms of Lord Shiva as depicted in Indian art traditions.</p>
+              <button class="btn btn-outline read-more-btn" 
+                data-title="Draw the Immortal" 
+                data-date="Feb 15, 2026" 
+                data-location="Open Theatre" 
+                data-img="img/Events Gallery/Draw the immortal/IMG_1575.PNG" 
+                data-content='<h3>Draw the Immortal</h3><p>Draw the Immortal\u201d was organized as a cultural art competition on the occasion of Maha Shivaratri to explore the diverse artistic representations of Shiva across Indian traditions and regional art forms. Organized by the EBSB Club in collaboration with Artihc Club, the event encouraged students to creatively interpret Shiva through various artistic styles while promoting cultural awareness, artistic diversity, and unity in diversity.</p><p>Participants presented artworks inspired by meditative, ascetic, dynamic, symbolic, abstract, and nature-inspired forms of Shiva, including representations such as Shiva with Parvati and depictions of cosmic energy and elemental balance. Students drew inspiration from temple sculptures, classical bronzes, folk and tribal art, regional painting styles, architectural motifs, and contemporary reinterpretations from different parts of India.</p><p>The competition provided a platform for students to express themes of motion and stillness, transformation and continuity, harmony and duality, and balance and energy through visual art.</p>'>Read More</button>
             </div>
           </div>
-
+    
+          <div class="event-card slide-up" data-category="national">
+            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Constitution day/IMG_1512.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-details" style="padding: 25px;">
+              <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
+                <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Feb 21, 2026</span>
+                <span><i class="fa-solid fa-location-dot" style="color: var(--green);"></i> Seminar Hall</span>
+              </div>
+              <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--navy-blue);">International Mother Tongue Day</h3>
+              <p style="margin-bottom: 20px; color: #475569; line-height: 1.6;">Listen Your Roots - Mother Tongue Singing.</p>
+              <button class="btn btn-outline read-more-btn" 
+                data-title="International Mother Tongue Day" 
+                data-date="Feb 21, 2026" 
+                data-location="Seminar Hall" 
+                data-img="img/Events Gallery/Constitution day/IMG_1512.PNG" 
+                data-content='<h3>Listen Your Roots \u2013 Mother Tongue Singing</h3><p>International Mother Language Day was celebrated through the event \u201cListen Your Roots \u2013 Mother Tongue Singing,\u201d organized to promote linguistic diversity, cultural identity, and unity in diversity within the IIT Jammu community.</p><p>The event provided students, faculty, and staff with an open and inclusive platform to sing in their mother tongue and present songs related to their language, culture, experiences, and traditions. Participants from diverse linguistic backgrounds showcased the beauty and uniqueness of their native languages through musical performances, encouraging authentic self-expression and cultural pride.</p><p>The celebration emphasized the importance of mother tongues as a medium of identity, emotion, heritage, and cultural connection while fostering mutual respect, intercultural understanding, and appreciation for India\u2019s multilingual diversity.</p>'>Read More</button>
+            </div>
+          </div>
+    
+          <div class="event-card slide-up" data-category="cultural">
+            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Holi/IMG_1639.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-details" style="padding: 25px;">
+              <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
+                <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Mar 03-04, 2026</span>
+                <span><i class="fa-solid fa-location-dot" style="color: var(--green);"></i> Campus Grounds</span>
+              </div>
+              <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--navy-blue);">Holi - Unity in Every Hue</h3>
+              <p style="margin-bottom: 20px; color: #475569; line-height: 1.6;">Holika Dahan and Rangwali Holi celebrations.</p>
+              <button class="btn btn-outline read-more-btn" 
+                data-title="Holi - Unity in Every Hue" 
+                data-date="Mar 03-04, 2026" 
+                data-location="Campus Grounds" 
+                data-img="img/Events Gallery/Holi/IMG_1639.PNG" 
+                data-content='<h3>Holi \u2013 Unity in Every Hue</h3><p>Holi celebrations were organized under the theme \u201cUnity in Every Hue\u201d to promote cultural harmony, inclusivity, and unity in diversity through traditional and eco-friendly celebrations. The event highlighted how Holi is celebrated in diverse forms across different regions of India while bringing together students from varied cultural backgrounds under the spirit of Ek Bharat Shreshtha Bharat.</p><h3>Holika Dahan</h3><p>A traditional Holika Dahan ceremony was conducted as a symbolic ritual representing the victory of good over evil and the burning of negativity. Inspired by regional traditions observed across states such as Uttar Pradesh, Rajasthan, Gujarat, Maharashtra, Bihar, and Madhya Pradesh, the ceremony encouraged collective participation and cultural awareness while symbolizing harmony, positivity, and national integration.</p><h3>Rangwali Holi</h3><p>An eco-friendly Rangwali Holi celebration was organized to showcase the diverse regional traditions associated with Holi across India, including Rang Panchami, Basant Utsav, and various regional observances. Special emphasis was placed on safety and environmental responsibility throughout the celebration. Only eco-friendly, organic, and non-toxic colours were used.</p>'>Read More</button>
+            </div>
+          </div>
+    
+          <div class="event-card slide-up" data-category="cultural">
+            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Ugadi & Gudi padwa/IMG_1535.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-details" style="padding: 25px;">
+              <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
+                <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Mar 19, 2026</span>
+                <span><i class="fa-solid fa-location-dot" style="color: var(--green);"></i> Campus Corridors</span>
+              </div>
+              <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--navy-blue);">Ugadi 2026 & Ethnic Day</h3>
+              <p style="margin-bottom: 20px; color: #475569; line-height: 1.6;">Diversity of Lunar Almanac, Ugadi, Gudi Padwa and Ethnic Day.</p>
+              <button class="btn btn-outline read-more-btn" 
+                data-title="Ugadi 2026 & Ethnic Day" 
+                data-date="Mar 19, 2026" 
+                data-location="Campus Corridors" 
+                data-img="img/Events Gallery/Ugadi & Gudi padwa/IMG_1535.PNG" 
+                data-content='<h3>Spring New Year Celebrations 2026</h3><p>The Spring New Year celebrations were organized under the Ek Bharat Shreshtha Bharat initiative to highlight the diverse New Year traditions celebrated across India, including Ugadi and Gudi Padwa. Through cultural activities, traditional practices, and student participation, the event promoted cultural exchange, unity in diversity, and appreciation of India\u2019s rich regional heritage.</p><h3>Ethnic Day</h3><p>An Ethnic Day was organized as part of the Spring New Year celebrations, where students attended classes dressed in traditional attire representing different regions of India. The activity created a festive atmosphere across the campus while encouraging students to proudly showcase their cultural heritage and traditions.</p><h3>Ugadi & Gudi Padwa Celebration</h3><p>The Ugadi celebration included an introduction to the significance of Ugadi and other Spring New Year festivals celebrated across India. As part of the celebration, Ugadi Pachadi was prepared and distributed among participants. A traditional Gudi Padwa celebration was also organized to introduce students to Maharashtrian New Year traditions, including the installation of a ceremonial \u201cGudi\u201d.</p>'>Read More</button>
+            </div>
+          </div>
+    
         </div>
       </div>
-
-      <!-- Technical Events -->
-      <div class="event-category slide-up delay-300">
-        <h2 style="color: var(--navy-blue); margin-bottom: 20px;"><i class="fa-solid fa-microchip"></i> Technical Events</h2>
-        <div class="grid" style="grid-template-columns: 1fr; gap: 30px;">
-          
-          <div class="event-card">
-            <div class="event-img"><i class="fa-solid fa-image fa-3x"></i></div>
-            <div class="event-details">
-              <div class="event-meta">
-                <span><i class="fa-regular fa-calendar"></i> Jan 25, 2026</span>
-                <span><i class="fa-solid fa-location-dot"></i> Tinkerers' Lab</span>
-              </div>
-              <h3 style="font-size: 1.5rem; margin-bottom: 10px;">National Voters' Day Challenge</h3>
-              <p style="margin-bottom: 20px;">An Arduino-based Electronic Voting Machine (EVM) Making Challenge focusing on democratic awareness.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-      
     </div>
   </section>
 
@@ -489,9 +601,9 @@
   <div class="modal-overlay" id="event-modal">
     <div class="modal-content">
       <button class="close-modal" id="close-modal-btn"><i class="fa-solid fa-xmark"></i></button>
-      <div class="modal-image-placeholder">
-        <i class="fa-solid fa-image fa-4x"></i>
-        <p style="margin-left: 15px;">Image Placeholder</p>
+      <div class="modal-image-placeholder" id="modal-img-container" style="overflow:hidden;">
+        <img id="modal-img" src="" alt="" style="width:100%;height:100%;object-fit:cover;display:none;">
+        <div id="modal-img-fallback" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;color:#94a3b8;"><i class="fa-solid fa-image fa-4x"></i></div>
       </div>
       <div class="modal-header">
         <h2 id="modal-title">Event Title</h2>
@@ -514,42 +626,13 @@
     </div>
   </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const tabs = document.querySelectorAll('.tab-btn');
-      const categories = document.querySelectorAll('.event-category');
-      
-      tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          tabs.forEach(t => t.classList.remove('active'));
-          tab.classList.add('active');
-          
-          const filter = tab.textContent.trim().toLowerCase();
-          
-          categories.forEach(cat => {
-            if (filter === 'all events') {
-              cat.style.display = 'block';
-            } else {
-              const catTitle = cat.querySelector('h2').textContent.toLowerCase();
-              // Check if category title contains 'cultural', 'educational', or 'technical'
-              const keyword = filter.split(' ')[0];
-              if (catTitle.includes(keyword)) {
-                cat.style.display = 'block';
-              } else {
-                cat.style.display = 'none';
-              }
-            }
-          });
-        });
-      });
-    });
-  </script>
+
   <script src="js/main.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // Filtering logic
       const filterBtns = document.querySelectorAll('.tab-btn');
-      const eventItems = document.querySelectorAll('.event-item');
+      const eventItems = document.querySelectorAll('.event-card');
 
       filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -584,19 +667,38 @@
       readMoreBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.preventDefault();
-          const eventId = btn.getAttribute('data-id');
-          const data = eventsData[eventId];
+          const title = btn.getAttribute('data-title');
+          const date = btn.getAttribute('data-date');
+          const location = btn.getAttribute('data-location');
+          const rawContent = btn.getAttribute('data-content');
           
-          if(data) {
-            modalTitle.textContent = data.title;
-            modalMeta.innerHTML = `
-              <span><i class="fa-regular fa-calendar"></i> ${data.date}</span>
-              <span class="event-category-tag">${data.categoryLabel}</span>
-            `;
-            modalBody.innerHTML = data.content;
+          if(title) {
+            modalTitle.textContent = title;
+            modalMeta.innerHTML = '<span><i class="fa-regular fa-calendar"></i> ' + date + '</span>' +
+              '<span><i class="fa-solid fa-location-dot"></i> ' + (location || '') + '</span>';
+            
+            // Show event image in modal
+            var imgSrc = btn.getAttribute('data-img');
+            var modalImgEl = document.getElementById('modal-img');
+            var modalFallback = document.getElementById('modal-img-fallback');
+            if (imgSrc) {
+              modalImgEl.src = imgSrc;
+              modalImgEl.style.display = 'block';
+              modalFallback.style.display = 'none';
+            } else {
+              modalImgEl.style.display = 'none';
+              modalFallback.style.display = 'flex';
+            }
+            
+            // Try JSON parse first, fallback to raw
+            try {
+              modalBody.innerHTML = JSON.parse(rawContent);
+            } catch(err) {
+              modalBody.innerHTML = rawContent;
+            }
             
             modalOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
+            document.body.style.overflow = 'hidden';
           }
         });
       });

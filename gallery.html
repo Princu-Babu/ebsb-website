@@ -10,63 +10,38 @@
   <style>
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
     }
     .gallery-item {
-      position: relative;
-      border-radius: 12px;
+      border-radius: 10px;
       overflow: hidden;
       aspect-ratio: 4/3;
-      background-color: var(--light-gray);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #94a3b8;
       cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-    .gallery-item:hover .gallery-overlay {
-      opacity: 1;
+    .gallery-item:hover {
+      transform: scale(1.03);
+      box-shadow: var(--shadow-lg);
     }
-    .gallery-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,128,0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.3s;
-      color: var(--white);
-      font-size: 1.5rem;
+    /* Lightbox */
+    .lightbox {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 2000;
+      display: none; align-items: center; justify-content: center;
     }
-    .category-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 90vw; max-height: 90vh; border-radius: 8px; object-fit: contain;
     }
-    .tab-btn {
-      padding: 10px 24px;
-      border-radius: 30px;
-      background: var(--white);
-      border: 1px solid var(--border-color);
-      cursor: pointer;
-      font-weight: 500;
-      transition: all 0.3s;
-    }
-    .tab-btn.active, .tab-btn:hover {
-      background: var(--green);
-      color: var(--white);
-      border-color: var(--green);
+    .lightbox-close {
+      position: absolute; top: 20px; right: 30px;
+      color: #fff; font-size: 2rem; cursor: pointer; background: none; border: none;
     }
   </style>
 </head>
 <body>
   <div class="page-transition"></div>
 
-  <!-- Navigation -->
   <nav class="navbar">
     <div class="container">
       <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 10px;">
@@ -89,7 +64,6 @@
     </div>
   </nav>
 
-  <!-- Page Header -->
   <header class="page-header slide-in-left">
     <div class="container">
       <h1>Media Gallery</h1>
@@ -97,49 +71,466 @@
     </div>
   </header>
 
-  <!-- Gallery Section -->
-  <section class="bg-white">
+  <section>
     <div class="container">
-      
-      <div class="category-tabs slide-up">
-        <button class="tab-btn active">All</button>
-        <button class="tab-btn">Photos</button>
-        <button class="tab-btn">Videos</button>
-        <button class="tab-btn">Posters</button>
-      </div>
 
-      <div class="gallery-grid slide-up delay-100">
-        <!-- Gallery Items -->
-        <div class="gallery-item">
-          <i class="fa-solid fa-image fa-3x"></i>
-          <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+        <div class="gallery-event" style="margin-bottom: 50px;">
+          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Constitution Day</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Constitution day/IMG_1512.PNG" alt="Constitution Day" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Constitution day/IMG_1513.PNG" alt="Constitution Day" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Constitution day/IMG_1514.PNG" alt="Constitution Day" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Constitution day/IMG_1515.PNG" alt="Constitution Day" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
         </div>
-        <div class="gallery-item">
-          <i class="fa-solid fa-image fa-3x"></i>
-          <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+        <div class="gallery-event" style="margin-bottom: 50px;">
+          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Diwali</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Diwali/IMG_1689.PNG" alt="Diwali" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Diwali/IMG_1690.PNG" alt="Diwali" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Diwali/IMG_1691.PNG" alt="Diwali" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Diwali/IMG_1692.PNG" alt="Diwali" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Diwali/IMG_1693.PNG" alt="Diwali" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Diwali/IMG_1694.PNG" alt="Diwali" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
         </div>
-        <div class="gallery-item">
-          <i class="fa-solid fa-video fa-3x"></i>
-          <div class="gallery-overlay"><i class="fa-solid fa-play"></i></div>
+        <div class="gallery-event" style="margin-bottom: 50px;">
+          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Diya Crafting Workshop</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Diya crafting & designing workshop/IMG_1671.PNG" alt="Diya Crafting Workshop" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Diya crafting & designing workshop/IMG_1672.PNG" alt="Diya Crafting Workshop" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Diya crafting & designing workshop/IMG_1673.PNG" alt="Diya Crafting Workshop" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Diya crafting & designing workshop/IMG_1674.PNG" alt="Diya Crafting Workshop" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Diya crafting & designing workshop/IMG_1675.PNG" alt="Diya Crafting Workshop" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Diya crafting & designing workshop/IMG_1676.PNG" alt="Diya Crafting Workshop" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
         </div>
-        <div class="gallery-item">
-          <i class="fa-solid fa-image fa-3x"></i>
-          <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+        <div class="gallery-event" style="margin-bottom: 50px;">
+          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Draw the Immortal</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Draw the immortal/IMG_1575.PNG" alt="Draw the Immortal" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Draw the immortal/IMG_1576.PNG" alt="Draw the Immortal" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Draw the immortal/IMG_1577.PNG" alt="Draw the Immortal" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Draw the immortal/IMG_1578.PNG" alt="Draw the Immortal" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Draw the immortal/IMG_1580.PNG" alt="Draw the Immortal" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Draw the immortal/IMG_1581.PNG" alt="Draw the Immortal" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
         </div>
-        <div class="gallery-item">
-          <i class="fa-solid fa-image fa-3x"></i>
-          <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+        <div class="gallery-event" style="margin-bottom: 50px;">
+          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Dussehra</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Dussehra (burn the evil)/IMG_1596.PNG" alt="Dussehra" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Dussehra (burn the evil)/IMG_1597.PNG" alt="Dussehra" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Dussehra (burn the evil)/IMG_1598.PNG" alt="Dussehra" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Dussehra (burn the evil)/IMG_1599.PNG" alt="Dussehra" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Dussehra (burn the evil)/IMG_1600.PNG" alt="Dussehra" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Dussehra (burn the evil)/IMG_1601.PNG" alt="Dussehra" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
         </div>
-        <div class="gallery-item">
-          <i class="fa-solid fa-file-invoice fa-3x"></i>
-          <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+        <div class="gallery-event" style="margin-bottom: 50px;">
+          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Ethnic Day</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Ethnic day/IMG_1522.PNG" alt="Ethnic Day" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Ethnic day/IMG_1523.PNG" alt="Ethnic Day" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Ethnic day/IMG_1524.PNG" alt="Ethnic Day" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Ethnic day/IMG_1525.PNG" alt="Ethnic Day" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Ethnic day/IMG_1526.PNG" alt="Ethnic Day" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Ethnic day/IMG_1527.PNG" alt="Ethnic Day" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
         </div>
-      </div>
-
+        <div class="gallery-event" style="margin-bottom: 50px;">
+          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Gandhi-Shastri Jayanthi</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Gandhi Shastri Jayanthi/IMG_4593.PNG" alt="Gandhi-Shastri Jayanthi" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Gandhi Shastri Jayanthi/IMG_4594.PNG" alt="Gandhi-Shastri Jayanthi" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Gandhi Shastri Jayanthi/IMG_4595.PNG" alt="Gandhi-Shastri Jayanthi" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Gandhi Shastri Jayanthi/IMG_4596.PNG" alt="Gandhi-Shastri Jayanthi" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Gandhi Shastri Jayanthi/IMG_4597.PNG" alt="Gandhi-Shastri Jayanthi" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Gandhi Shastri Jayanthi/IMG_4598.PNG" alt="Gandhi-Shastri Jayanthi" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
+        </div>
+        <div class="gallery-event" style="margin-bottom: 50px;">
+          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Guru Nanak Jayanti</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Guru nanak jayanti/IMG_1493.PNG" alt="Guru Nanak Jayanti" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Guru nanak jayanti/IMG_1494.PNG" alt="Guru Nanak Jayanti" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Guru nanak jayanti/IMG_1495.PNG" alt="Guru Nanak Jayanti" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Guru nanak jayanti/IMG_1496.PNG" alt="Guru Nanak Jayanti" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Guru nanak jayanti/IMG_1497.PNG" alt="Guru Nanak Jayanti" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Guru nanak jayanti/IMG_1498.PNG" alt="Guru Nanak Jayanti" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
+        </div>
+        <div class="gallery-event" style="margin-bottom: 50px;">
+          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Holi</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Holi/IMG_1639.PNG" alt="Holi" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Holi/IMG_1640.PNG" alt="Holi" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Holi/IMG_1641.PNG" alt="Holi" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Holi/IMG_1642.PNG" alt="Holi" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Holi/IMG_1643.PNG" alt="Holi" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Holi/IMG_1644.PNG" alt="Holi" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
+        </div>
+        <div class="gallery-event" style="margin-bottom: 50px;">
+          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Janmashtami</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Janmashtami/IMG_1454.PNG" alt="Janmashtami" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Janmashtami/IMG_1456.PNG" alt="Janmashtami" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Janmashtami/IMG_1457.PNG" alt="Janmashtami" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Janmashtami/IMG_1458.PNG" alt="Janmashtami" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Janmashtami/IMG_1459.PNG" alt="Janmashtami" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Janmashtami/IMG_1462.PNG" alt="Janmashtami" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
+        </div>
+        <div class="gallery-event" style="margin-bottom: 50px;">
+          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">National Voters Day</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/National voters day/IMG_1555.PNG" alt="National Voters Day" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/National voters day/IMG_1556.PNG" alt="National Voters Day" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/National voters day/IMG_1557.PNG" alt="National Voters Day" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/National voters day/IMG_1558.PNG" alt="National Voters Day" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/National voters day/IMG_1559.PNG" alt="National Voters Day" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/National voters day/IMG_1560.PNG" alt="National Voters Day" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
+        </div>
+        <div class="gallery-event" style="margin-bottom: 50px;">
+          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">National Youth Day</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/National youth day/IMG_1516.PNG" alt="National Youth Day" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/National youth day/IMG_1517.PNG" alt="National Youth Day" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/National youth day/IMG_1518.PNG" alt="National Youth Day" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/National youth day/IMG_1519.PNG" alt="National Youth Day" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/National youth day/IMG_1520.PNG" alt="National Youth Day" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/National youth day/IMG_1521.PNG" alt="National Youth Day" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
+        </div>
+        <div class="gallery-event" style="margin-bottom: 50px;">
+          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Pongal</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Pongal/IMG_1654.PNG" alt="Pongal" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Pongal/IMG_1655.PNG" alt="Pongal" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Pongal/IMG_1656.PNG" alt="Pongal" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Pongal/IMG_1657.PNG" alt="Pongal" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Pongal/IMG_1658.PNG" alt="Pongal" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Pongal/IMG_1659.PNG" alt="Pongal" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
+        </div>
+        <div class="gallery-event" style="margin-bottom: 50px;">
+          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Rakhi Making</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Rakhi making/IMG_4572.PNG" alt="Rakhi Making" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Rakhi making/IMG_4573.PNG" alt="Rakhi Making" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Rakhi making/IMG_4574.PNG" alt="Rakhi Making" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Rakhi making/IMG_4575.PNG" alt="Rakhi Making" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Rakhi making/IMG_4577.PNG" alt="Rakhi Making" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Rakhi making/IMG_4578.PNG" alt="Rakhi Making" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
+        </div>
+        <div class="gallery-event" style="margin-bottom: 50px;">
+          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Rangoli Competition</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Rangoli making competition/IMG_1679.PNG" alt="Rangoli Competition" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Rangoli making competition/IMG_1680.PNG" alt="Rangoli Competition" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Rangoli making competition/IMG_1681.PNG" alt="Rangoli Competition" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Rangoli making competition/IMG_1682.PNG" alt="Rangoli Competition" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Rangoli making competition/IMG_1683.PNG" alt="Rangoli Competition" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Rangoli making competition/IMG_1684.PNG" alt="Rangoli Competition" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
+        </div>
+        <div class="gallery-event" style="margin-bottom: 50px;">
+          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Tribal Cuisine Carnival</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Tribal cuisine unity carnival/IMG_1473.PNG" alt="Tribal Cuisine Carnival" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Tribal cuisine unity carnival/IMG_1474.PNG" alt="Tribal Cuisine Carnival" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Tribal cuisine unity carnival/IMG_1476.PNG" alt="Tribal Cuisine Carnival" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Tribal cuisine unity carnival/IMG_1478.PNG" alt="Tribal Cuisine Carnival" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Tribal cuisine unity carnival/IMG_1479.PNG" alt="Tribal Cuisine Carnival" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Tribal cuisine unity carnival/IMG_1480.PNG" alt="Tribal Cuisine Carnival" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
+        </div>
+        <div class="gallery-event" style="margin-bottom: 50px;">
+          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Ugadi & Gudi Padwa</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Ugadi & Gudi padwa/IMG_1535.PNG" alt="Ugadi & Gudi Padwa" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Ugadi & Gudi padwa/IMG_1536.PNG" alt="Ugadi & Gudi Padwa" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Ugadi & Gudi padwa/IMG_1537.PNG" alt="Ugadi & Gudi Padwa" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Ugadi & Gudi padwa/IMG_1538.PNG" alt="Ugadi & Gudi Padwa" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Ugadi & Gudi padwa/IMG_1539.PNG" alt="Ugadi & Gudi Padwa" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Ugadi & Gudi padwa/IMG_1540.PNG" alt="Ugadi & Gudi Padwa" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
+        </div>
+        <div class="gallery-event" style="margin-bottom: 50px;">
+          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Vasant Panchami</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Vasant panchami/IMG_1631.PNG" alt="Vasant Panchami" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Vasant panchami/IMG_1632.PNG" alt="Vasant Panchami" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Vasant panchami/IMG_1633.PNG" alt="Vasant Panchami" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Vasant panchami/IMG_1634.PNG" alt="Vasant Panchami" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Vasant panchami/IMG_1635.PNG" alt="Vasant Panchami" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/Vasant panchami/IMG_1636.PNG" alt="Vasant Panchami" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
+        </div>
+        <div class="gallery-event" style="margin-bottom: 50px;">
+          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Durgashtami</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/durgashtami website gallery/IMG_6374.JPG" alt="Durgashtami" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/durgashtami website gallery/IMG_6384.JPG" alt="Durgashtami" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/durgashtami website gallery/IMG_6406.JPG" alt="Durgashtami" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/durgashtami website gallery/IMG_6449.JPG" alt="Durgashtami" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
+        </div>
+        <div class="gallery-event" style="margin-bottom: 50px;">
+          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Onam</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/onam website gallery/IMG_5397.JPG" alt="Onam" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/onam website gallery/IMG_5400 - Copy.JPG" alt="Onam" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/onam website gallery/IMG_5406.JPG" alt="Onam" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/onam website gallery/IMG_5446.JPG" alt="Onam" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/onam website gallery/IMG_5468.JPG" alt="Onam" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="gallery-item slide-up">
+              <img src="img/Events Gallery/onam website gallery/IMG_5469.JPG" alt="Onam" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
+        </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">&times;</button>
+    <img id="lightbox-img" src="" alt="Full size">
+  </div>
+
   <footer class="footer">
     <div class="container">
       <div class="footer-bottom">
@@ -149,5 +540,22 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+      img.addEventListener('click', () => {
+        lbImg.src = img.src;
+        lightbox.classList.add('active');
+      });
+    });
+    document.getElementById('lightbox-close').addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) lightbox.classList.remove('active');
+    });
+  </script>
 </body>
 </html>

@@ -58,7 +58,7 @@
 .page-transition {
   position: fixed;
   inset: 0;
-  background-color: var(--white);
+  background-color: #ffffff;
   z-index: 9999;
   pointer-events: none;
   animation: fadeOutTransition 0.5s ease forwards;
