@@ -19,24 +19,13 @@
       aspect-ratio: 4/3;
       cursor: pointer;
       transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
     }
     .gallery-item:hover {
       transform: scale(1.03);
       box-shadow: var(--shadow-lg);
     }
-    /* Lightbox */
-    .lightbox {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 2000;
-      display: none; align-items: center; justify-content: center;
-    }
-    .lightbox.active { display: flex; }
-    .lightbox img {
-      max-width: 90vw; max-height: 90vh; border-radius: 8px; object-fit: contain;
-    }
-    .lightbox-close {
-      position: absolute; top: 20px; right: 30px;
-      color: #fff; font-size: 2rem; cursor: pointer; background: none; border: none;
-    }
+    .gallery-item img { width:100%; height:100%; object-fit:cover; display:block; }
   </style>
 </head>
 <body>
@@ -79,8 +68,34 @@
       <section>
     <div class="container">
 
-        <div class="gallery-event" style="margin-bottom: 50px;">
-          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Ambedkar Jayanti, Vishu & Puthandu</h3>
+      <!-- Filter Tabs -->
+      <div class="gallery-filters" id="gallery-filters">
+        <button class="gallery-tab active" data-filter="all">All Events</button>
+        <button class="gallery-tab" data-filter="ambedkar">Ambedkar Jayanthi</button>
+        <button class="gallery-tab" data-filter="constitution">Constitution Day</button>
+        <button class="gallery-tab" data-filter="diwali">Diwali</button>
+        <button class="gallery-tab" data-filter="diya">Diya Workshop</button>
+        <button class="gallery-tab" data-filter="immortal">Draw the Immortal</button>
+        <button class="gallery-tab" data-filter="dussehra">Dussehra</button>
+        <button class="gallery-tab" data-filter="ethnic">Ethnic Day</button>
+        <button class="gallery-tab" data-filter="gandhi">Gandhi-Shastri</button>
+        <button class="gallery-tab" data-filter="gurunanak">Guru Nanak</button>
+        <button class="gallery-tab" data-filter="holi">Holi</button>
+        <button class="gallery-tab" data-filter="janmashtami">Janmashtami</button>
+        <button class="gallery-tab" data-filter="voters">Voters Day</button>
+        <button class="gallery-tab" data-filter="youth">Youth Day</button>
+        <button class="gallery-tab" data-filter="pongal">Pongal</button>
+        <button class="gallery-tab" data-filter="rakhi">Rakhi Making</button>
+        <button class="gallery-tab" data-filter="rangoli">Rangoli</button>
+        <button class="gallery-tab" data-filter="tribal">Tribal Cuisine</button>
+        <button class="gallery-tab" data-filter="ugadi">Ugadi</button>
+        <button class="gallery-tab" data-filter="vasant">Vasant Panchami</button>
+        <button class="gallery-tab" data-filter="durgashtami">Durgashtami</button>
+        <button class="gallery-tab" data-filter="onam">Onam</button>
+      </div>
+
+        <div class="gallery-event-block" data-event="ambedkar" id="gallery-ambedkar" style="margin-bottom: 50px;">
+          <div class="gallery-event-header"><span class="gallery-event-title">Ambedkar Jayanti, Vishu &amp; Puthandu</span><a href="events.html#ambedkar" class="gallery-event-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Event</a></div>
           <div class="gallery-grid">
             <div class="gallery-item slide-up">
               <img src="img/Events Gallery/Ambedkar jayanthi vishu puthandu/IMG_4688.PNG" alt="Ambedkar Jayanti, Vishu & Puthandu" style="width:100%;height:100%;object-fit:cover;">
@@ -117,8 +132,8 @@
             </div>
           </div>
         </div>
-        <div class="gallery-event" style="margin-bottom: 50px;">
-          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Constitution Day</h3>
+        <div class="gallery-event-block" data-event="constitution" id="gallery-constitution" style="margin-bottom: 50px;">
+          <div class="gallery-event-header"><span class="gallery-event-title">Constitution Day</span><a href="events.html" class="gallery-event-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Event</a></div>
           <div class="gallery-grid">
             <div class="gallery-item slide-up">
               <img src="img/Events Gallery/Constitution day/IMG_1512.PNG" alt="Constitution Day" style="width:100%;height:100%;object-fit:cover;">
@@ -134,8 +149,8 @@
             </div>
           </div>
         </div>
-        <div class="gallery-event" style="margin-bottom: 50px;">
-          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Diwali</h3>
+        <div class="gallery-event-block" data-event="diwali" id="gallery-diwali" style="margin-bottom: 50px;">
+          <div class="gallery-event-header"><span class="gallery-event-title">Diwali</span><a href="events.html" class="gallery-event-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Event</a></div>
           <div class="gallery-grid">
             <div class="gallery-item slide-up">
               <img src="img/Events Gallery/Diwali/IMG_1689.PNG" alt="Diwali" style="width:100%;height:100%;object-fit:cover;">
@@ -211,8 +226,8 @@
             </div>
           </div>
         </div>
-        <div class="gallery-event" style="margin-bottom: 50px;">
-          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Diya Crafting Workshop</h3>
+        <div class="gallery-event-block" data-event="diya" id="gallery-diya" style="margin-bottom: 50px;">
+          <div class="gallery-event-header"><span class="gallery-event-title">Diya Crafting Workshop</span><a href="events.html" class="gallery-event-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Event</a></div>
           <div class="gallery-grid">
             <div class="gallery-item slide-up">
               <img src="img/Events Gallery/Diya crafting & designing workshop/IMG_1671.PNG" alt="Diya Crafting Workshop" style="width:100%;height:100%;object-fit:cover;">
@@ -240,8 +255,8 @@
             </div>
           </div>
         </div>
-        <div class="gallery-event" style="margin-bottom: 50px;">
-          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Draw the Immortal</h3>
+        <div class="gallery-event-block" data-event="immortal" id="gallery-immortal" style="margin-bottom: 50px;">
+          <div class="gallery-event-header"><span class="gallery-event-title">Draw the Immortal</span><a href="events.html" class="gallery-event-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Event</a></div>
           <div class="gallery-grid">
             <div class="gallery-item slide-up">
               <img src="img/Events Gallery/Draw the immortal/IMG_1575.PNG" alt="Draw the Immortal" style="width:100%;height:100%;object-fit:cover;">
@@ -305,8 +320,8 @@
             </div>
           </div>
         </div>
-        <div class="gallery-event" style="margin-bottom: 50px;">
-          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Dussehra</h3>
+        <div class="gallery-event-block" data-event="dussehra" id="gallery-dussehra" style="margin-bottom: 50px;">
+          <div class="gallery-event-header"><span class="gallery-event-title">Dussehra</span><a href="events.html" class="gallery-event-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Event</a></div>
           <div class="gallery-grid">
             <div class="gallery-item slide-up">
               <img src="img/Events Gallery/Dussehra (burn the evil)/IMG_1596.PNG" alt="Dussehra" style="width:100%;height:100%;object-fit:cover;">
@@ -343,8 +358,8 @@
             </div>
           </div>
         </div>
-        <div class="gallery-event" style="margin-bottom: 50px;">
-          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Ethnic Day</h3>
+        <div class="gallery-event-block" data-event="ethnic" id="gallery-ethnic" style="margin-bottom: 50px;">
+          <div class="gallery-event-header"><span class="gallery-event-title">Ethnic Day</span><a href="events.html" class="gallery-event-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Event</a></div>
           <div class="gallery-grid">
             <div class="gallery-item slide-up">
               <img src="img/Events Gallery/Ethnic day/IMG_1522.PNG" alt="Ethnic Day" style="width:100%;height:100%;object-fit:cover;">
@@ -384,8 +399,8 @@
             </div>
           </div>
         </div>
-        <div class="gallery-event" style="margin-bottom: 50px;">
-          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Gandhi-Shastri Jayanthi</h3>
+        <div class="gallery-event-block" data-event="gandhi" id="gallery-gandhi" style="margin-bottom: 50px;">
+          <div class="gallery-event-header"><span class="gallery-event-title">Gandhi-Shastri Jayanthi</span><a href="events.html" class="gallery-event-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Event</a></div>
           <div class="gallery-grid">
             <div class="gallery-item slide-up">
               <img src="img/Events Gallery/Gandhi Shastri Jayanthi/IMG_4593.PNG" alt="Gandhi-Shastri Jayanthi" style="width:100%;height:100%;object-fit:cover;">
@@ -425,8 +440,8 @@
             </div>
           </div>
         </div>
-        <div class="gallery-event" style="margin-bottom: 50px;">
-          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Guru Nanak Jayanti</h3>
+        <div class="gallery-event-block" data-event="gurunanak" id="gallery-gurunanak" style="margin-bottom: 50px;">
+          <div class="gallery-event-header"><span class="gallery-event-title">Guru Nanak Jayanti</span><a href="events.html" class="gallery-event-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Event</a></div>
           <div class="gallery-grid">
             <div class="gallery-item slide-up">
               <img src="img/Events Gallery/Guru nanak jayanti/IMG_1493.PNG" alt="Guru Nanak Jayanti" style="width:100%;height:100%;object-fit:cover;">
@@ -487,8 +502,8 @@
             </div>
           </div>
         </div>
-        <div class="gallery-event" style="margin-bottom: 50px;">
-          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Holi</h3>
+        <div class="gallery-event-block" data-event="holi" id="gallery-holi" style="margin-bottom: 50px;">
+          <div class="gallery-event-header"><span class="gallery-event-title">Holi</span><a href="events.html" class="gallery-event-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Event</a></div>
           <div class="gallery-grid">
             <div class="gallery-item slide-up">
               <img src="img/Events Gallery/Holi/IMG_1639.PNG" alt="Holi" style="width:100%;height:100%;object-fit:cover;">
@@ -534,8 +549,8 @@
             </div>
           </div>
         </div>
-        <div class="gallery-event" style="margin-bottom: 50px;">
-          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Janmashtami</h3>
+        <div class="gallery-event-block" data-event="janmashtami" id="gallery-janmashtami" style="margin-bottom: 50px;">
+          <div class="gallery-event-header"><span class="gallery-event-title">Janmashtami</span><a href="events.html" class="gallery-event-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Event</a></div>
           <div class="gallery-grid">
             <div class="gallery-item slide-up">
               <img src="img/Events Gallery/Janmashtami/IMG_1454.PNG" alt="Janmashtami" style="width:100%;height:100%;object-fit:cover;">
@@ -575,8 +590,8 @@
             </div>
           </div>
         </div>
-        <div class="gallery-event" style="margin-bottom: 50px;">
-          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">National Voters Day</h3>
+        <div class="gallery-event-block" data-event="voters" id="gallery-voters" style="margin-bottom: 50px;">
+          <div class="gallery-event-header"><span class="gallery-event-title">National Voters Day</span><a href="events.html" class="gallery-event-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Event</a></div>
           <div class="gallery-grid">
             <div class="gallery-item slide-up">
               <img src="img/Events Gallery/National voters day/IMG_1555.PNG" alt="National Voters Day" style="width:100%;height:100%;object-fit:cover;">
@@ -634,8 +649,8 @@
             </div>
           </div>
         </div>
-        <div class="gallery-event" style="margin-bottom: 50px;">
-          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">National Youth Day</h3>
+        <div class="gallery-event-block" data-event="youth" id="gallery-youth" style="margin-bottom: 50px;">
+          <div class="gallery-event-header"><span class="gallery-event-title">National Youth Day</span><a href="events.html" class="gallery-event-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Event</a></div>
           <div class="gallery-grid">
             <div class="gallery-item slide-up">
               <img src="img/Events Gallery/National youth day/IMG_1516.PNG" alt="National Youth Day" style="width:100%;height:100%;object-fit:cover;">
@@ -657,8 +672,8 @@
             </div>
           </div>
         </div>
-        <div class="gallery-event" style="margin-bottom: 50px;">
-          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Pongal</h3>
+        <div class="gallery-event-block" data-event="pongal" id="gallery-pongal" style="margin-bottom: 50px;">
+          <div class="gallery-event-header"><span class="gallery-event-title">Pongal</span><a href="events.html" class="gallery-event-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Event</a></div>
           <div class="gallery-grid">
             <div class="gallery-item slide-up">
               <img src="img/Events Gallery/Pongal/IMG_1654.PNG" alt="Pongal" style="width:100%;height:100%;object-fit:cover;">
@@ -713,8 +728,8 @@
             </div>
           </div>
         </div>
-        <div class="gallery-event" style="margin-bottom: 50px;">
-          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Rakhi Making</h3>
+        <div class="gallery-event-block" data-event="rakhi" id="gallery-rakhi" style="margin-bottom: 50px;">
+          <div class="gallery-event-header"><span class="gallery-event-title">Rakhi Making</span><a href="events.html" class="gallery-event-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Event</a></div>
           <div class="gallery-grid">
             <div class="gallery-item slide-up">
               <img src="img/Events Gallery/Rakhi making/IMG_4572.PNG" alt="Rakhi Making" style="width:100%;height:100%;object-fit:cover;">
@@ -739,8 +754,8 @@
             </div>
           </div>
         </div>
-        <div class="gallery-event" style="margin-bottom: 50px;">
-          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Rangoli Competition</h3>
+        <div class="gallery-event-block" data-event="rangoli" id="gallery-rangoli" style="margin-bottom: 50px;">
+          <div class="gallery-event-header"><span class="gallery-event-title">Rangoli Competition</span><a href="events.html" class="gallery-event-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Event</a></div>
           <div class="gallery-grid">
             <div class="gallery-item slide-up">
               <img src="img/Events Gallery/Rangoli making competition/IMG_1679.PNG" alt="Rangoli Competition" style="width:100%;height:100%;object-fit:cover;">
@@ -774,8 +789,8 @@
             </div>
           </div>
         </div>
-        <div class="gallery-event" style="margin-bottom: 50px;">
-          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Tribal Cuisine Carnival</h3>
+        <div class="gallery-event-block" data-event="tribal" id="gallery-tribal" style="margin-bottom: 50px;">
+          <div class="gallery-event-header"><span class="gallery-event-title">Tribal Cuisine Carnival</span><a href="events.html" class="gallery-event-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Event</a></div>
           <div class="gallery-grid">
             <div class="gallery-item slide-up">
               <img src="img/Events Gallery/Tribal cuisine unity carnival/IMG_1473.PNG" alt="Tribal Cuisine Carnival" style="width:100%;height:100%;object-fit:cover;">
@@ -819,13 +834,12 @@
             <div class="gallery-item slide-up">
               <img src="img/Events Gallery/Tribal cuisine unity carnival/IMG_1491.PNG" alt="Tribal Cuisine Carnival" style="width:100%;height:100%;object-fit:cover;">
             </div>
-            <div class="gallery-item slide-up">
               <img src="img/Events Gallery/Tribal cuisine unity carnival/IMG_1492.PNG" alt="Tribal Cuisine Carnival" style="width:100%;height:100%;object-fit:cover;">
             </div>
           </div>
         </div>
-        <div class="gallery-event" style="margin-bottom: 50px;">
-          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Ugadi & Gudi Padwa</h3>
+        <div class="gallery-event-block" data-event="ugadi" id="gallery-ugadi" style="margin-bottom: 50px;">
+          <div class="gallery-event-header"><span class="gallery-event-title">Ugadi &amp; Gudi Padwa</span><a href="events.html" class="gallery-event-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Event</a></div>
           <div class="gallery-grid">
             <div class="gallery-item slide-up">
               <img src="img/Events Gallery/Ugadi & Gudi padwa/IMG_1535.PNG" alt="Ugadi & Gudi Padwa" style="width:100%;height:100%;object-fit:cover;">
@@ -910,8 +924,8 @@
             </div>
           </div>
         </div>
-        <div class="gallery-event" style="margin-bottom: 50px;">
-          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Vasant Panchami</h3>
+        <div class="gallery-event-block" data-event="vasant" id="gallery-vasant" style="margin-bottom: 50px;">
+          <div class="gallery-event-header"><span class="gallery-event-title">Vasant Panchami</span><a href="events.html" class="gallery-event-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Event</a></div>
           <div class="gallery-grid">
             <div class="gallery-item slide-up">
               <img src="img/Events Gallery/Vasant panchami/IMG_1631.PNG" alt="Vasant Panchami" style="width:100%;height:100%;object-fit:cover;">
@@ -939,8 +953,8 @@
             </div>
           </div>
         </div>
-        <div class="gallery-event" style="margin-bottom: 50px;">
-          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Durgashtami</h3>
+        <div class="gallery-event-block" data-event="durgashtami" id="gallery-durgashtami" style="margin-bottom: 50px;">
+          <div class="gallery-event-header"><span class="gallery-event-title">Durgashtami</span><a href="events.html" class="gallery-event-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Event</a></div>
           <div class="gallery-grid">
             <div class="gallery-item slide-up">
               <img src="img/Events Gallery/durgashtami website gallery/IMG_6374.JPG" alt="Durgashtami" style="width:100%;height:100%;object-fit:cover;">
@@ -956,8 +970,8 @@
             </div>
           </div>
         </div>
-        <div class="gallery-event" style="margin-bottom: 50px;">
-          <h3 style="margin-bottom: 20px; color: var(--navy-blue); font-size: 1.3rem; border-left: 4px solid var(--saffron); padding-left: 12px;">Onam</h3>
+        <div class="gallery-event-block" data-event="onam" id="gallery-onam" style="margin-bottom: 50px;">
+          <div class="gallery-event-header"><span class="gallery-event-title">Onam</span><a href="events.html" class="gallery-event-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Event</a></div>
           <div class="gallery-grid">
             <div class="gallery-item slide-up">
               <img src="img/Events Gallery/onam website gallery/IMG_5397.JPG" alt="Onam" style="width:100%;height:100%;object-fit:cover;">
@@ -1126,20 +1140,86 @@
 
   <script src="js/main.js"></script>
   <script>
-    // Lightbox
-    const lightbox = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lightbox-img');
-    document.querySelectorAll('.gallery-item img').forEach(img => {
-      img.addEventListener('click', () => {
-        lbImg.src = img.src;
-        lightbox.classList.add('active');
+    // ====== GALLERY FILTER ======
+    const filterTabs = document.querySelectorAll('.gallery-tab');
+    const galleryBlocks = document.querySelectorAll('.gallery-event-block');
+
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.getAttribute('data-filter');
+
+        galleryBlocks.forEach(block => {
+          if (filter === 'all' || block.getAttribute('data-event') === filter) {
+            block.style.display = '';
+            block.style.animation = 'fadeIn 0.4s ease';
+          } else {
+            block.style.display = 'none';
+          }
+        });
+
+        // Scroll to top of gallery area smoothly
+        if (filter !== 'all') {
+          const firstVisible = document.querySelector('.gallery-event-block[data-event="' + filter + '"]');
+          if (firstVisible) {
+            setTimeout(() => firstVisible.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+          }
+        }
       });
     });
+
+    // Handle deep-link from events page (e.g. gallery.html#gallery-diwali)
+    if (window.location.hash) {
+      const targetId = window.location.hash.substring(1);
+      const targetBlock = document.getElementById(targetId);
+      if (targetBlock) {
+        const eventKey = targetBlock.getAttribute('data-event');
+        if (eventKey) {
+          // Activate matching filter tab
+          filterTabs.forEach(t => {
+            t.classList.toggle('active', t.getAttribute('data-filter') === eventKey);
+          });
+          // Hide other blocks
+          galleryBlocks.forEach(block => {
+            block.style.display = (block.getAttribute('data-event') === eventKey) ? '' : 'none';
+          });
+          // Scroll to block after short delay
+          setTimeout(() => targetBlock.scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
+        }
+      }
+    }
+
+    // ====== LIGHTBOX ======
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    let allImgs = [];
+    let currentIdx = 0;
+
+    function openLightbox(idx) {
+      currentIdx = idx;
+      lbImg.src = allImgs[idx].src;
+      lightbox.classList.add('active');
+    }
+
+    document.querySelectorAll('.gallery-item img').forEach((img, i) => {
+      allImgs.push(img);
+      img.addEventListener('click', () => openLightbox(i));
+    });
+
     document.getElementById('lightbox-close').addEventListener('click', () => {
       lightbox.classList.remove('active');
     });
     lightbox.addEventListener('click', (e) => {
       if (e.target === lightbox) lightbox.classList.remove('active');
+    });
+
+    // Keyboard nav
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') lightbox.classList.remove('active');
+      if (e.key === 'ArrowRight') openLightbox((currentIdx + 1) % allImgs.length);
+      if (e.key === 'ArrowLeft') openLightbox((currentIdx - 1 + allImgs.length) % allImgs.length);
     });
   </script>
 </body>

@@ -190,6 +190,41 @@
     </div>
   </section>
 
+  <!-- Collaborations Section -->
+  <section class="collab-section">
+    <div class="container" style="position: relative; z-index: 1;">
+      <h2 class="section-title text-center slide-up">Collaborations &amp; Partnerships</h2>
+      <p style="text-align:center; color:rgba(255,255,255,0.65); margin-top:-2rem; margin-bottom:2.5rem; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.7;">Building bridges between institutions, clubs, and communities in the spirit of Ek Bharat Shreshtha Bharat.</p>
+      <div class="collab-grid">
+        <div class="collab-card slide-up delay-100">
+          <div class="collab-icon"><i class="fa-solid fa-ribbon"></i></div>
+          <h4>Kritash Club</h4>
+          <p>Rakhi Making Workshop &mdash; handmade rakhis for Rakshabandhan</p>
+        </div>
+        <div class="collab-card slide-up delay-200">
+          <div class="collab-icon"><i class="fa-solid fa-bowl-food"></i></div>
+          <h4>Food Tinkers Club</h4>
+          <p>Tribal Cuisine Unity Carnival &mdash; indigenous culinary traditions</p>
+        </div>
+        <div class="collab-card slide-up delay-300">
+          <div class="collab-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+          <h4>Law School Jammu</h4>
+          <p>Gandhi-Shastri Jayanthi &mdash; Official Language Act discussion</p>
+        </div>
+        <div class="collab-card slide-up delay-400">
+          <div class="collab-icon"><i class="fa-solid fa-palette"></i></div>
+          <h4>Artihc Club</h4>
+          <p>Diwali &amp; Draw the Immortal &mdash; cultural art events</p>
+        </div>
+        <div class="collab-card slide-up delay-500">
+          <div class="collab-icon"><i class="fa-solid fa-microchip"></i></div>
+          <h4>I2EDC</h4>
+          <p>EVM Making Challenge &mdash; Arduino-based democracy in action</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
@@ -200,5 +235,15 @@
   </footer>
 
   <script src="js/main.js"></script>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+  <script>
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 400);
+    });
+    btt.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+  </script>
 </body>
 </html>

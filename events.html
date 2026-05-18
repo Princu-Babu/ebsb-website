@@ -11,47 +11,39 @@
     .event-category { margin-bottom: 60px; }
     .event-card {
       display: flex;
+      flex-direction: column;
       background: var(--white);
-      border-radius: 16px;
+      border-radius: 14px;
       overflow: hidden;
       box-shadow: var(--shadow-sm);
       border: 1px solid var(--border-color);
       transition: transform 0.3s, box-shadow 0.3s;
-      margin-bottom: 30px;
     }
     .event-card:hover {
       transform: translateY(-5px);
       box-shadow: var(--shadow-lg);
     }
     .event-img {
-      width: 300px;
-      min-width: 300px;
-      background-color: var(--light-gray);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #94a3b8;
+      width: 100%;
+      height: 250px;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
     }
     .event-img img {
-      width: 100%;
-      height: 100%;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       object-fit: cover;
+      object-position: center center;
+      display: block;
     }
     .event-details {
-      padding: 30px;
+      padding: 25px;
       flex: 1;
       display: flex;
       flex-direction: column;
     }
-    .event-meta {
-      display: flex;
-      gap: 15px;
-      margin-bottom: 15px;
-      font-size: 0.9rem;
-      color: #64748b;
-      flex-wrap: wrap;
-    }
-    .event-meta i { color: var(--saffron); }
     .event-category-tag {
       background: rgba(255, 153, 51, 0.1);
       color: var(--saffron);
@@ -59,10 +51,6 @@
       border-radius: 20px;
       font-weight: 500;
       font-size: 0.8rem;
-    }
-    @media(max-width: 768px) {
-      .event-card { flex-direction: column; }
-      .event-img { width: 100%; height: 200px; min-width: auto; }
     }
     .category-tabs {
       display: flex;
@@ -110,93 +98,86 @@
       opacity: 1;
       pointer-events: auto;
     }
+    /* Modal overlay */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,0.7);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      padding: 20px;
+    }
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    /* modal-content = the white box */
     .modal-content {
       background: var(--white);
       width: 100%;
-      max-width: 800px;
-      max-height: 90vh;
+      max-width: 960px;
       border-radius: 16px;
-      overflow-y: auto;
+      overflow: hidden;          /* NO overflow-y here — children handle scrolling */
       position: relative;
       transform: translateY(20px);
       transition: transform 0.3s ease;
-      padding: 40px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    }
-    @media(max-width: 768px) {
-      .modal-content {
-        padding: 25px;
-      }
+      box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+      /* NO padding here — split layout children handle their own padding */
     }
     .modal-overlay.active .modal-content {
       transform: translateY(0);
     }
     .close-modal {
       position: absolute;
-      top: 20px;
-      right: 20px;
-      background: var(--light-gray);
+      top: 14px;
+      right: 14px;
+      background: rgba(255,255,255,0.9);
       border: none;
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       cursor: pointer;
       color: var(--navy-blue);
-      transition: all 0.3s;
+      transition: all 0.25s;
+      z-index: 20;
     }
     .close-modal:hover {
       background: var(--saffron);
-      color: var(--white);
-    }
-    .modal-header h2 {
-      color: var(--navy-blue);
-      margin-bottom: 15px;
-      font-size: 2rem;
+      color: #fff;
     }
     .modal-meta {
       color: #64748b;
-      font-size: 0.95rem;
-      margin-bottom: 25px;
+      font-size: 0.9rem;
       display: flex;
-      gap: 20px;
+      gap: 16px;
       flex-wrap: wrap;
     }
-    .modal-meta i {
-      color: var(--saffron);
-    }
+    .modal-meta i { color: var(--saffron); }
     .modal-body p {
-      margin-bottom: 15px;
-      line-height: 1.7;
+      margin-bottom: 14px;
+      line-height: 1.75;
       color: #334155;
+      font-size: 0.95rem;
     }
     .modal-body h3 {
-      margin-top: 30px;
-      margin-bottom: 15px;
+      margin-top: 24px;
+      margin-bottom: 10px;
       color: var(--saffron);
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       border-bottom: 1px solid var(--border-color);
-      padding-bottom: 8px;
+      padding-bottom: 6px;
     }
-    .modal-image-placeholder {
-      width: 100%;
-      height: 300px;
-      background: var(--light-gray);
-      border-radius: 12px;
-      margin-bottom: 25px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #94a3b8;
-    }
-    
-    .read-more-btn {
-      margin-top: auto;
-      align-self: flex-start;
-    }
+    .read-more-btn { margin-top: auto; align-self: flex-start; }
   </style>
 </head>
 <body>
@@ -248,10 +229,10 @@
       </div>
 
       <div class='event-category slide-up delay-100'>
-        <div class='grid' id='events-grid' style='grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px;'>
+        <div class='grid' id='events-grid' style='grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 28px; align-items: start;'>
 
           <div class="event-card slide-up" data-category="cultural">
-            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Rakhi making/IMG_4572.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-img" style="height: 250px;"><img src="img/Events Gallery/Rakhi making/IMG_4572.PNG"></div>
             <div class="event-details" style="padding: 25px;">
               <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
                 <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Aug 07, 2025</span>
@@ -269,7 +250,7 @@
           </div>
     
           <div class="event-card slide-up" data-category="cultural">
-            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Janmashtami/IMG_1454.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-img" style="height: 250px;"><img src="img/Events Gallery/Janmashtami/IMG_1454.PNG"></div>
             <div class="event-details" style="padding: 25px;">
               <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
                 <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Aug 16, 2025</span>
@@ -287,7 +268,7 @@
           </div>
     
           <div class="event-card slide-up" data-category="cultural">
-            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/onam website gallery/IMG_5397.JPG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-img" style="height: 250px;"><img src="img/Events Gallery/onam website gallery/IMG_5397.JPG"></div>
             <div class="event-details" style="padding: 25px;">
               <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
                 <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Sep 05, 2025</span>
@@ -305,7 +286,7 @@
           </div>
     
           <div class="event-card slide-up" data-category="cultural">
-            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/durgashtami website gallery/IMG_6374.JPG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-img" style="height: 250px;"><img src="img/Events Gallery/durgashtami website gallery/IMG_6374.JPG"></div>
             <div class="event-details" style="padding: 25px;">
               <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
                 <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Sep 30, 2025</span>
@@ -323,7 +304,7 @@
           </div>
     
           <div class="event-card slide-up" data-category="social">
-            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Dussehra (burn the evil)/IMG_1596.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-img" style="height: 250px;"><img src="img/Events Gallery/Dussehra (burn the evil)/IMG_1596.PNG"></div>
             <div class="event-details" style="padding: 25px;">
               <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
                 <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Oct 02, 2025</span>
@@ -341,7 +322,7 @@
           </div>
     
           <div class="event-card slide-up" data-category="national">
-            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Gandhi Shastri Jayanthi/IMG_4593.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-img" style="height: 250px;"><img src="img/Events Gallery/Gandhi Shastri Jayanthi/IMG_4593.PNG"></div>
             <div class="event-details" style="padding: 25px;">
               <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
                 <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Oct 02, 2025</span>
@@ -359,7 +340,7 @@
           </div>
     
           <div class="event-card slide-up" data-category="cultural">
-            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Diwali/IMG_1689.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-img" style="height: 250px;"><img src="img/Events Gallery/Diwali/IMG_1689.PNG"></div>
             <div class="event-details" style="padding: 25px;">
               <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
                 <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Oct 17-20, 2025</span>
@@ -377,7 +358,7 @@
           </div>
     
           <div class="event-card slide-up" data-category="technical">
-            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Diya crafting & designing workshop/IMG_1671.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-img" style="height: 250px;"><img src="img/Events Gallery/Diya crafting & designing workshop/IMG_1671.PNG"></div>
             <div class="event-details" style="padding: 25px;">
               <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
                 <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Oct 18, 2025</span>
@@ -395,7 +376,7 @@
           </div>
     
           <div class="event-card slide-up" data-category="technical">
-            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Rangoli making competition/IMG_1679.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-img" style="height: 250px;"><img src="img/Events Gallery/Rangoli making competition/IMG_1679.PNG"></div>
             <div class="event-details" style="padding: 25px;">
               <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
                 <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Oct 19, 2025</span>
@@ -413,7 +394,7 @@
           </div>
     
           <div class="event-card slide-up" data-category="cultural-exchange">
-            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Tribal cuisine unity carnival/IMG_1473.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-img" style="height: 250px;"><img src="img/Events Gallery/Tribal cuisine unity carnival/IMG_1473.PNG"></div>
             <div class="event-details" style="padding: 25px;">
               <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
                 <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Oct 31, 2025</span>
@@ -431,7 +412,7 @@
           </div>
     
           <div class="event-card slide-up" data-category="social">
-            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Guru nanak jayanti/IMG_1493.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-img" style="height: 250px;"><img src="img/Events Gallery/Guru nanak jayanti/IMG_1493.PNG"></div>
             <div class="event-details" style="padding: 25px;">
               <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
                 <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Nov 05, 2025</span>
@@ -449,7 +430,7 @@
           </div>
     
           <div class="event-card slide-up" data-category="national">
-            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Constitution day/IMG_1512.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-img" style="height: 250px;"><img src="img/Events Gallery/Constitution day/IMG_1512.PNG"></div>
             <div class="event-details" style="padding: 25px;">
               <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
                 <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Nov 26, 2025</span>
@@ -467,7 +448,7 @@
           </div>
     
           <div class="event-card slide-up" data-category="national">
-            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/National youth day/IMG_1516.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-img" style="height: 250px;"><img src="img/Events Gallery/National youth day/IMG_1516.PNG"></div>
             <div class="event-details" style="padding: 25px;">
               <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
                 <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Jan 12, 2026</span>
@@ -485,7 +466,7 @@
           </div>
     
           <div class="event-card slide-up" data-category="cultural">
-            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Pongal/IMG_1654.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-img" style="height: 250px;"><img src="img/Events Gallery/Pongal/home.jpeg"></div>
             <div class="event-details" style="padding: 25px;">
               <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
                 <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Jan 13-15, 2026</span>
@@ -497,13 +478,13 @@
                 data-title="Sankranti 2026 - India's Harvest Festival" 
                 data-date="Jan 13-15, 2026" 
                 data-location="Campus Grounds" 
-                data-img="img/Events Gallery/Pongal/IMG_1654.PNG" 
+                data-img="img/Events Gallery/Pongal/home.jpeg" 
                 data-content='<h3>Makara Sankranti Celebrations</h3><p>Makara Sankranti celebrations were organized as a pan-Indian harvest festival event under the Ek Bharat Shreshtha Bharat initiative, highlighting the shared agricultural traditions that unite diverse cultures across India. The celebration showcased how harvest festivals are observed in different regions under various names such as Pongal, Lohri, Uttarayan, Magh Bihu, Suggi, Poush Sankranti, Maghi, Tusu Parab, and Pedda Panduga, reflecting gratitude toward nature, farmers, and the Sun God.</p><h3>Kite Festival \u2013 Uttarayan Celebration</h3><p>A Kite Festival was organized to represent the spirit of Uttarayan and Makara Sankranti celebrations observed across western and central India. Students participated in kite flying activities symbolizing joy, hope, positivity, and new beginnings associated with the harvest season.</p><h3>Lohri Celebration & Cultural Jamming Session</h3><p>A Lohri celebration featuring a symbolic bonfire and cultural jamming session was conducted to represent the harvest traditions of northern and northeastern India. The event included music, cultural interactions, and community participation inspired by festivals such as Lohri, Magh Bihu, and Gaan-Ngai.</p><h3>Pongal Competition</h3><p>A Pongal-making competition was organized to celebrate the culinary traditions associated with harvest festivals across India. Participants prepared traditional Pongal dishes while discussing similar food traditions connected with Makara Sankranti and regional harvest festivals.</p>'>Read More</button>
             </div>
           </div>
     
           <div class="event-card slide-up" data-category="national">
-            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Vasant panchami/IMG_1631.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-img" style="height: 250px;"><img src="img/Events Gallery/Vasant panchami/IMG_1631.PNG"></div>
             <div class="event-details" style="padding: 25px;">
               <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
                 <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Jan 23, 2026</span>
@@ -521,7 +502,7 @@
           </div>
     
           <div class="event-card slide-up" data-category="technical">
-            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/National voters day/IMG_1555.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-img" style="height: 250px;"><img src="img/Events Gallery/National voters day/IMG_1555.PNG"></div>
             <div class="event-details" style="padding: 25px;">
               <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
                 <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Jan 25, 2026</span>
@@ -539,7 +520,7 @@
           </div>
     
           <div class="event-card slide-up" data-category="creative">
-            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Draw the immortal/IMG_1575.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-img" style="height: 250px;"><img src="img/Events Gallery/Draw the immortal/IMG_1575.PNG"></div>
             <div class="event-details" style="padding: 25px;">
               <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
                 <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Feb 15, 2026</span>
@@ -557,7 +538,7 @@
           </div>
     
           <div class="event-card slide-up" data-category="national">
-            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Gandhi Shastri Jayanthi/IMG_4593.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-img" style="height: 250px;"><img src="img/Events Gallery/Gandhi Shastri Jayanthi/IMG_4593.PNG"></div>
             <div class="event-details" style="padding: 25px;">
               <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
                 <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Feb 21, 2026</span>
@@ -575,7 +556,7 @@
           </div>
     
           <div class="event-card slide-up" data-category="cultural">
-            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Holi/IMG_1639.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-img" style="height: 250px;"><img src="img/Events Gallery/Holi/IMG_1639.PNG"></div>
             <div class="event-details" style="padding: 25px;">
               <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
                 <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Mar 03-04, 2026</span>
@@ -593,7 +574,7 @@
           </div>
     
           <div class="event-card slide-up" data-category="cultural">
-            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Ugadi & Gudi padwa/IMG_1535.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-img" style="height: 250px;"><img src="img/Events Gallery/Ugadi & Gudi padwa/home.jpeg"></div>
             <div class="event-details" style="padding: 25px;">
               <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
                 <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Mar 19, 2026</span>
@@ -605,13 +586,13 @@
                 data-title="Ugadi 2026 & Ethnic Day" 
                 data-date="Mar 19, 2026" 
                 data-location="Campus Corridors" 
-                data-img="img/Events Gallery/Ugadi & Gudi padwa/IMG_1535.PNG" 
+                data-img="img/Events Gallery/Ugadi & Gudi padwa/home.jpeg" 
                 data-content='<h3>Spring New Year Celebrations 2026</h3><p>The Spring New Year celebrations were organized under the Ek Bharat Shreshtha Bharat initiative to highlight the diverse New Year traditions celebrated across India, including Ugadi and Gudi Padwa. Through cultural activities, traditional practices, and student participation, the event promoted cultural exchange, unity in diversity, and appreciation of India\u2019s rich regional heritage.</p><h3>Ethnic Day</h3><p>An Ethnic Day was organized as part of the Spring New Year celebrations, where students attended classes dressed in traditional attire representing different regions of India. The activity created a festive atmosphere across the campus while encouraging students to proudly showcase their cultural heritage and traditions.</p><h3>Ugadi & Gudi Padwa Celebration</h3><p>The Ugadi celebration included an introduction to the significance of Ugadi and other Spring New Year festivals celebrated across India. As part of the celebration, Ugadi Pachadi was prepared and distributed among participants. A traditional Gudi Padwa celebration was also organized to introduce students to Maharashtrian New Year traditions, including the installation of a ceremonial \u201cGudi\u201d.</p>'>Read More</button>
             </div>
           </div>
     
           <div class="event-card slide-up" data-category="national">
-            <div class="event-img" style="height: 250px; display: flex; align-items: center; justify-content: center; background: var(--light-gray); overflow: hidden;"><img src="img/Events Gallery/Ambedkar jayanthi vishu puthandu/IMG_4688.PNG" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="event-img" style="height: 250px;"><img src="img/Events Gallery/Ambedkar jayanthi vishu puthandu/IMG_4688.PNG"></div>
             <div class="event-details" style="padding: 25px;">
               <div class="event-meta" style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
                 <span style="margin-right: 15px;"><i class="fa-regular fa-calendar" style="color: var(--saffron);"></i> Apr 14, 2026</span>
@@ -635,23 +616,64 @@
 
   <!-- Modal Template -->
   <div class="modal-overlay" id="event-modal">
-    <div class="modal-content">
-      <button class="close-modal" id="close-modal-btn"><i class="fa-solid fa-xmark"></i></button>
-      <div class="modal-image-placeholder" id="modal-img-container" style="overflow:hidden;">
-        <img id="modal-img" src="" alt="" style="width:100%;height:100%;object-fit:cover;display:none;">
-        <div id="modal-img-fallback" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;color:#94a3b8;"><i class="fa-solid fa-image fa-4x"></i></div>
+    <div class="modal-content modal-content-split">
+      <button class="close-modal" id="close-modal-btn" style="z-index: 10;"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-image-placeholder" id="modal-img-container">
+        <div class="modal-logo-badge" id="modal-logo-badge">
+          <img src="img/ebsb-logo.jpeg" alt="EBSB Logo">
+        </div>
+        <img id="modal-img" src="" alt="" style="display:none;">
+        <div id="modal-img-fallback" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;color:#94a3b8;background:#f1f5f9;"><i class="fa-solid fa-image fa-4x"></i></div>
       </div>
-      <div class="modal-header">
-        <h2 id="modal-title">Event Title</h2>
-      </div>
-      <div class="modal-meta" id="modal-meta">
-        <!-- Date and Category -->
-      </div>
-      <div class="modal-body" id="modal-body">
-        <!-- Content -->
+      <div class="modal-text-section">
+        <div class="modal-header" style="padding: 0; border: none; margin-bottom: 10px;">
+          <h2 id="modal-title" style="color: var(--navy-blue); font-size: 1.6rem; margin-bottom: 0;">Event Title</h2>
+        </div>
+        <div class="modal-meta" id="modal-meta" style="margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border-color);">
+          <!-- Date and Category -->
+        </div>
+        <div class="modal-body" id="modal-body" style="padding: 0; overflow-y: visible; max-height: none;">
+          <!-- Content -->
+        </div>
+        <div id="modal-gallery-link-wrap"></div>
       </div>
     </div>
   </div>
+
+  <!-- Collaborations Section -->
+  <section class="collab-section">
+    <div class="container" style="position: relative; z-index: 1;">
+      <h2 class="section-title text-center slide-up">Collaborations &amp; Partnerships</h2>
+      <p style="text-align:center; color:rgba(255,255,255,0.65); margin-top:-2rem; margin-bottom:2.5rem; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.7;">Events made richer through collaboration with clubs and institutions that share our vision of unity and cultural excellence.</p>
+      <div class="collab-grid">
+        <div class="collab-card slide-up delay-100">
+          <div class="collab-icon"><i class="fa-solid fa-ribbon"></i></div>
+          <h4>Kritash Club</h4>
+          <p>Rakhi Making Workshop — crafting handmade rakhis for Rakshabandhan</p>
+        </div>
+        <div class="collab-card slide-up delay-200">
+          <div class="collab-icon"><i class="fa-solid fa-bowl-food"></i></div>
+          <h4>Food Tinkers Club</h4>
+          <p>Tribal Cuisine Unity Carnival — celebrating indigenous culinary traditions</p>
+        </div>
+        <div class="collab-card slide-up delay-300">
+          <div class="collab-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+          <h4>Law School Jammu</h4>
+          <p>Gandhi-Shastri Jayanthi — discussion on the Official Language Act, 1963</p>
+        </div>
+        <div class="collab-card slide-up delay-400">
+          <div class="collab-icon"><i class="fa-solid fa-palette"></i></div>
+          <h4>Artihc Club</h4>
+          <p>Diwali celebrations &amp; Draw the Immortal — art competition on Maha Shivaratri</p>
+        </div>
+        <div class="collab-card slide-up delay-500">
+          <div class="collab-icon"><i class="fa-solid fa-microchip"></i></div>
+          <h4>I2EDC</h4>
+          <p>EVM Making Challenge — Arduino-based democracy in action on Voters Day</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="footer">
@@ -707,6 +729,7 @@
           const date = btn.getAttribute('data-date');
           const location = btn.getAttribute('data-location');
           const rawContent = btn.getAttribute('data-content');
+          const galleryAnchor = btn.getAttribute('data-gallery');
           
           if(title) {
             modalTitle.textContent = title;
@@ -726,11 +749,18 @@
               modalFallback.style.display = 'flex';
             }
             
-            // Try JSON parse first, fallback to raw
-            try {
-              modalBody.innerHTML = JSON.parse(rawContent);
-            } catch(err) {
-              modalBody.innerHTML = rawContent;
+            // Parse unicode escapes properly
+            function decodeUnicode(str) {
+              return str.replace(/\\u([0-9a-fA-F]{4})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+            }
+            modalBody.innerHTML = decodeUnicode(rawContent);
+
+            // Add View Gallery button
+            var galleryWrap = document.getElementById('modal-gallery-link-wrap');
+            if (galleryAnchor) {
+              galleryWrap.innerHTML = '<a href="gallery.html#' + galleryAnchor + '" class="view-gallery-btn"><i class="fa-solid fa-images"></i> View Gallery Photos</a>';
+            } else {
+              galleryWrap.innerHTML = '<a href="gallery.html" class="view-gallery-btn"><i class="fa-solid fa-images"></i> View Full Gallery</a>';
             }
             
             modalOverlay.classList.add('active');
@@ -750,7 +780,25 @@
           document.body.style.overflow = 'auto';
         }
       });
+
+      // Keyboard ESC to close modal
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          modalOverlay.classList.remove('active');
+          document.body.style.overflow = 'auto';
+        }
+      });
     });
+  </script>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+  <script>
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 400);
+    });
+    btt.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
   </script>
 </body>
 </html>

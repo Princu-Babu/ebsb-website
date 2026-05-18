@@ -1,25 +1,46 @@
 /* Animations for page load */
 .fade-in {
-  animation: fadeIn 0.8s ease forwards;
+  animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   opacity: 0;
 }
 
 .slide-up {
-  animation: slideUp 0.8s ease forwards;
+  animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   opacity: 0;
   transform: translateY(30px);
 }
 
 .slide-in-left {
-  animation: slideInLeft 0.8s ease forwards;
+  animation: slideInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   opacity: 0;
   transform: translateX(-30px);
 }
 
 .slide-in-right {
-  animation: slideInRight 0.8s ease forwards;
+  animation: slideInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   opacity: 0;
   transform: translateX(30px);
+}
+
+/* Premium micro-animations */
+.scale-in {
+  animation: scaleIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.float-hover:hover {
+  animation: float 3s ease-in-out infinite;
+}
+
+.pulse-subtle {
+  animation: pulseSubtle 2s infinite;
+}
+
+.shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
 }
 
 /* Stagger delays */
@@ -54,6 +75,30 @@
   }
 }
 
+@keyframes scaleIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulseSubtle {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
 /* Page transition overlay */
 .page-transition {
   position: fixed;
@@ -61,7 +106,7 @@
   background-color: #ffffff;
   z-index: 9999;
   pointer-events: none;
-  animation: fadeOutTransition 0.5s ease forwards;
+  animation: fadeOutTransition 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes fadeOutTransition {
